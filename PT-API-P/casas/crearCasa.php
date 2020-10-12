@@ -6,14 +6,15 @@
   $fecha = date('Y-m-d H:i:s');
   $id_colonia = mysqli_real_escape_string($conexion, $_POST['']);
   
+  
   $nombre = mysqli_real_escape_string($conexion, $_POST['']);
   $nombre_busqueda = strtolower($nombre);
   $direccion = mysqli_real_escape_string($conexion, $_POST['']);
   $descripcion = mysqli_real_escape_string($conexion, $_POST['']);
   $orden_anuncio = mysqli_real_escape_string($conexion,$_POST['']);
   $ambiente = mysqli_real_escape_string($conexion, $_POST['']);
-  $enlace = mysqli_real_escape_string($conexion, $_POST['']);
-  
+  //$enlace = mysqli_real_escape_string($conexion, $_POST['']);
+
 
   $numimg = count($_FILES['imgsCasa']["name"]);
   $imgs = $_FILES['imgsCasa'];
@@ -21,6 +22,7 @@
   $ruta_icarousel = $_FILES['imgCarousel']['tmp_name'];
   $ievento = $_FILES['imgPrincipal']['name'];
   $ruta_iprincipal = $_FILES['imgPrincipal']['tmp_name'];
+
 
   $consulta_insert_evento = "INSERT INTO evento(
   nombre_casa,
@@ -56,16 +58,16 @@
       $id_casa = $resultado["id_casa"];
   }
 
-  $carpeta_casa = "../../admin/assets/img/eventos/".$id_casa;
+  $carpeta_casa = "../../admin/assets/img/casas/".$id_casa;
   mkdir($carpeta_casa, 0777, true);
 
-  $carpeta_ievento = "../../admin/assets/img/eventos/".$id_casa."/"."principal";
+  $carpeta_ievento = "../../admin/assets/img/casas/".$id_casa."/"."principal";
   mkdir($carpeta_ievento, 0777, true);
 
-  $carpeta_icarousel = "../../admin/assets/img/eventos/".$id_casa."/"."carousel";
+  $carpeta_icarousel = "../../admin/assets/img/casas/".$id_casa."/"."carousel";
   mkdir($carpeta_icarousel, 0777, true);
 
-  $carpeta_imgs = "../../admin/assets/img/eventos/".$id_casa."/"."imgs";
+  $carpeta_imgs = "../../admin/assets/img/casas/".$id_casa."/"."imgs";
   mkdir($carpeta_imgs, 0777, true);
 
   $dircarousel = $carpeta_icarousel."/".$icarousel;
@@ -77,7 +79,7 @@
   $dircarousel = $id_casa."/carousel"."/".$icarousel;
   $direvento = $id_casa."/principal"."/".$ievento;
 
-  $consulta_update_evento = "UPDATE evento SET carousel_img = '$dircarousel', evento_img = '$direvento' WHERE id_evento = '$id_casa'";
+  $consulta_update_evento = "UPDATE casa SET carousel_img = '$dircarousel', evento_img = '$direvento' WHERE id_casa = '$id_casa'";
   mysqli_query($conexion, $consulta_update_evento) or die (mysqli_error($conexion));
 
   for($x=0; $x<$numimg; $x++){
