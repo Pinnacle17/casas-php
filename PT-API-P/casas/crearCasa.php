@@ -13,7 +13,6 @@
   $descripcion = mysqli_real_escape_string($conexion, $_POST['']);
   $orden_anuncio = mysqli_real_escape_string($conexion,$_POST['']);
   $ambiente = mysqli_real_escape_string($conexion, $_POST['']);
-  //$enlace = mysqli_real_escape_string($conexion, $_POST['']);
 
 
   $numimg = count($_FILES['imgsCasa']["name"]);
@@ -31,10 +30,8 @@
   descripcion_casa,
   creacion_casa,
   estado_casa,
-  calificacion_casa,
   orden_anuncio,
   ambiente, 
-  enlace_casa,
   fk_colonia) VALUES(
   '$nombre',  
   '$nombre_busqueda',  
@@ -42,10 +39,8 @@
   '$descripcion',
   '$fecha',
   1,
-  10, 
   '$orden_anuncio',
   '$ambiente', 
-  '$enlace',
   '$id_colonia')";
 
   mysqli_query($conexion, $consulta_insert_evento) or die (mysqli_error($conexion));
