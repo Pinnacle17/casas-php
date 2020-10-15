@@ -1,7 +1,7 @@
 <?php
     require("../headers.php");
     require("../conexion.php");
-
+//nos muestra todas las casas de la bd
     $conexion = conexion();
 
     $registros = mysqli_query($conexion, "SELECT * FROM casa ORDER BY orden_anuncio ASC");
@@ -20,7 +20,7 @@
         }
         $x++;
     }
-
+    //si es activa, nos muestra el boton de desactivar casa, si es Inactiva, nos muestra el boton de activar casa
     $json = json_encode($carousel);
 
     echo $json;

@@ -2,12 +2,12 @@
     require("../headers.php");
     require("../conexion.php");
     $conexion = conexion();
-
+//nos permite obtener si la casa esta siendo ocupada o no
     class Result {}
     
     $response = new Result();
 
-    $orden = mysqli_real_escape_string($conexion, $_GET['orden']);
+    $orden = mysqli_real_escape_string($conexion, $_GET['orden_anuncio']);
 
     $consulta = "SELECT nombre_casa, orden_anuncio FROM casa WHERE orden_anuncio = '$orden'";
     $registros = mysqli_query($conexion, $consulta);

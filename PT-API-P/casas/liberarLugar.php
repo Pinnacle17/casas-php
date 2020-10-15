@@ -2,9 +2,9 @@
     require("../headers.php");
     require("../conexion.php");
     $conexion = conexion();
-
-    $orden = mysqli_real_escape_string($conexion, $_GET['orden']);
-    $id = mysqli_real_escape_string($conexion, $_GET['id']);
+    //libera el lugar del evento que le mandemos para poderlo utilizar 
+    $orden = mysqli_real_escape_string($conexion, $_GET['orden_anuncio']);
+    $id = mysqli_real_escape_string($conexion, $_GET['id_casa']);
 
     $ordenbucle = $orden;
     $condicion = 0;

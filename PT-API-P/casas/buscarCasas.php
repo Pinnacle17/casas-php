@@ -3,24 +3,24 @@
     require("../conexion.php");
     $conexion = conexion();
     
-    $busqueda = mysqli_real_escape_string($conexion, $_GET['nombre_evento']);
+    $busqueda = mysqli_real_escape_string($conexion, $_GET['nombre']);
 
-    $consulta = "SELECT * FROM evento WHERE nombre_evento_busqueda LIKE '%$busqueda%'";
+    $consulta = "SELECT * FROM casa WHERE nombre_casa_busqueda LIKE '%$busqueda%'";
     $registros = mysqli_query($conexion, $consulta);
     
     if(mysqli_num_rows($registros) == 0){
-        echo null; 
+        echo null; //si es null significa que no se cambio nada
     }else{
-        $carousel = [];
+        $casa = [];
         $x = 0;
         while ($resultado = mysqli_fetch_array($registros)){
-            $carousel[$x]['id_casa'] = $resultado[$x]['id_casa'];
-            $carousel[$x]['nombre_casa'] = $resultado[$x]['nombre_casa'];
-            $carousel[$x]['estado_casa'] = $resultado[$x]['estado_casa'];
-            $carousel[$x]['orden_anuncio'] = $resultado[$x]['orden_anuncio'];
-            if($carousel[$x]['estado_casa'] == 1){
-                $carousel[$x]['estado_casa'] = "Activa";
-            }else if($carousel[$x]['estado_casa'] == 0){
+            $casa[$x]['id_casa'] = $resultado[$x]['id_casa'];
+            $casa[$x]['nombre_casa'] = $resultado[$x]['nombre_casa'];
+            $casa[$x]['estado_casa'] = $resultado[$x]['estado_casa'];
+            $casa[$x]['orden_anuncio'] = $resultado[$x]['orden_anuncio'];
+            if($casa[$x]['estado_casa'] == 1){
+                $casa[$x]['estado_casa'] = "Activa";
+            }else if($casa[$x]['estado_casa'] == 0){
                 $carousel[$x]['estado_casa'] = "Inactiva";
             }
             $x++;

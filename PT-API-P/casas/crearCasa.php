@@ -4,26 +4,26 @@
   $conexion = conexion();
   
   $fecha = date('Y-m-d H:i:s');
-  $id_colonia = mysqli_real_escape_string($conexion, $_POST['']);
+  $id_colonia = mysqli_real_escape_string($conexion, $_POST['id_colonia']);
   
   
-  $nombre = mysqli_real_escape_string($conexion, $_POST['']);
+  $nombre = mysqli_real_escape_string($conexion, $_POST['nombre_casa']);
   $nombre_busqueda = strtolower($nombre);
-  $direccion = mysqli_real_escape_string($conexion, $_POST['']);
-  $descripcion = mysqli_real_escape_string($conexion, $_POST['']);
-  $orden_anuncio = mysqli_real_escape_string($conexion,$_POST['']);
-  $ambiente = mysqli_real_escape_string($conexion, $_POST['']);
+  $direccion = mysqli_real_escape_string($conexion, $_POST['direccion_casa']);
+  $descripcion = mysqli_real_escape_string($conexion, $_POST['descripcion_casa']);
+  $orden_anuncio = mysqli_real_escape_string($conexion,$_POST['orden_anuncio']);
+  $ambiente = mysqli_real_escape_string($conexion, $_POST['ambiente']);
 
 
   $numimg = count($_FILES['imgsCasa']["name"]);
   $imgs = $_FILES['imgsCasa'];
   $icarousel = $_FILES['imgCarousel']['name'];
   $ruta_icarousel = $_FILES['imgCarousel']['tmp_name'];
-  $ievento = $_FILES['imgPrincipal']['name'];
+  $iprincipal = $_FILES['imgPrincipal']['name'];
   $ruta_iprincipal = $_FILES['imgPrincipal']['tmp_name'];
 
 
-  $consulta_insert_evento = "INSERT INTO evento(
+  $consulta_insert_casa = "INSERT INTO evento(
   nombre_casa,
   nombre_casa_busqueda,
   direccion_casa, 
@@ -43,7 +43,7 @@
   '$ambiente', 
   '$id_colonia')";
 
-  mysqli_query($conexion, $consulta_insert_evento) or die (mysqli_error($conexion));
+  mysqli_query($conexion, $consulta_insert_casa) or die (mysqli_error($conexion));
 
   $consulta_select_id = "SELECT id_casa FROM casa WHERE creacion_casa = '$fecha'";
 
@@ -56,8 +56,8 @@
   $carpeta_casa = "../../admin/assets/img/casas/".$id_casa;
   mkdir($carpeta_casa, 0777, true);
 
-  $carpeta_ievento = "../../admin/assets/img/casas/".$id_casa."/"."principal";
-  mkdir($carpeta_ievento, 0777, true);
+  $carpeta_iprincipal = "../../admin/assets/img/casas/".$id_casa."/"."principal";
+  mkdir($carpeta_iprincipal, 0777, true);
 
   $carpeta_icarousel = "../../admin/assets/img/casas/".$id_casa."/"."carousel";
   mkdir($carpeta_icarousel, 0777, true);
@@ -66,16 +66,16 @@
   mkdir($carpeta_imgs, 0777, true);
 
   $dircarousel = $carpeta_icarousel."/".$icarousel;
-  $direvento = $carpeta_ievento."/".$ievento;
+  $dirprincipal = $carpeta_iprincipal."/".$iprincipal;
 
   move_uploaded_file($ruta_icarousel, $dircarousel);
-  move_uploaded_file($ruta_iprincipal, $direvento);
+  move_uploaded_file($ruta_iprincipal, $dirprincipal);
 
   $dircarousel = $id_casa."/carousel"."/".$icarousel;
-  $direvento = $id_casa."/principal"."/".$ievento;
+  $dirprincipal = $id_casa."/principal"."/".$ievento;
 
-  $consulta_update_evento = "UPDATE casa SET carousel_img = '$dircarousel', evento_img = '$direvento' WHERE id_casa = '$id_casa'";
-  mysqli_query($conexion, $consulta_update_evento) or die (mysqli_error($conexion));
+  $consulta_update_casa = "UPDATE casa SET carousel_img = '$dircarousel', principal_img = '$dirprincipal' WHERE id_casa = '$id_casa'";
+  mysqli_query($conexion, $consulta_update_casa) or die (mysqli_error($conexion));
 
   for($x=0; $x<$numimg; $x++){
 
