@@ -1,6 +1,6 @@
 <?php
-  require("../../headers.php");
-  require("../../conexion.php");
+  require("../../../headers.php");
+  require("../../../conexion.php");
   $conexion = conexion();
   
   $fecha = date('Y-m-d H:i:s');
@@ -35,7 +35,7 @@
       $id_cuarto = $resultado["id_cuarto"];
   }
 
-  $carpeta_cuarto = "../../../admin/assets/img/casas/".$id_casa."/".$id_cuarto;
+  $carpeta_cuarto = "../../../../admin/assets/img/casas/".$id_casa."/".$id_cuarto;
   mkdir($carpeta_cuarto, 0777, true);
 
   $carpeta_iprincipal = $carpeta_cuarto."/principal";
