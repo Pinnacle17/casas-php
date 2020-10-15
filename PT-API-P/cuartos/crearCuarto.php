@@ -7,10 +7,8 @@
   $id_casa = mysqli_real_escape_string($conexion, $_POST['id_casa']);
   $nombre = mysqli_real_escape_string($conexion, $_POST['nombre_cuarto']);
   $descripcion = mysqli_real_escape_string($conexion, $_POST['descripcion_cuarto']);
-
-
-  $numimg = count($_FILES['imgsCasa']["name"]);
-  $imgs = $_FILES['imgsCasa'];
+  $numimg = count($_FILES['imgsCuarto']["name"]);
+  $imgs = $_FILES['imgsCuarto'];
   $iprincipal = $_FILES['imgPrincipal']['name'];
   $ruta_iprincipal = $_FILES['imgPrincipal']['tmp_name'];
 

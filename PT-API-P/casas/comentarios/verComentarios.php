@@ -4,7 +4,7 @@
     include_once("../modelo/ClaseCasa.php");
     include_once("../modelo/ClaseUsuario.php");
 
-    $id_casa = $_GET['id'];
+    $id_casa = $_GET['id_casa'];
 
     $comentarios = Casa::VerComentariosNormales($id_casa);
     echo json_encode($comentarios);

@@ -12,7 +12,7 @@
         $x++;
     }
 
-    $json = json_encode($carousel);
+    $json = json_encode($colonias);
 
     echo $json;
 
