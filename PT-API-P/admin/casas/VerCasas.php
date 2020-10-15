@@ -9,10 +9,10 @@
     $carousel = [];
     $x = 0;
     while ($resultado = mysqli_fetch_array($registros)){
-        $carousel[$x]['id_casa'] = $resultado[$x]['id_casa'];
-        $carousel[$x]['nombre_casa'] = $resultado[$x]['nombre_casa'];
-        $carousel[$x]['estado_casa'] = $resultado[$x]['estado_casa'];
-        $carousel[$x]['orden_anuncio'] = $resultado[$x]['orden_anuncio'];
+        $carousel[$x]['id_casa'] = $resultado['id_casa'];
+        $carousel[$x]['nombre_casa'] = $resultado['nombre_casa'];
+        $carousel[$x]['estado_casa'] = $resultado['estado_casa'];
+        $carousel[$x]['orden_anuncio'] = $resultado['orden_anuncio'];
         if($carousel[$x]['estado_casa'] == 1){
             $carousel[$x]['estado_casa'] = "Activa";
         }else if($carousel[$x]['estado_casa'] == 0){
