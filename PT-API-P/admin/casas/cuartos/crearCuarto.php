@@ -51,7 +51,7 @@
 
   $consulta_update_cuarto = "UPDATE cuarto SET principal_img = '$dirprincipal' WHERE id_casa = '$id_casa'";
   mysqli_query($conexion, $consulta_update_cuarto) or die (mysqli_error($conexion));
-
+  $dir_general_imgs = $id_casa."/".$id_cuarto."/imgs"."/";
   for($x=0; $x<$numimg; $x++){
 
       $nombre_img = $imgs["name"][$x];
@@ -60,9 +60,9 @@
       $dir_imgs = $carpeta_imgs."/".$nombre_img;
       move_uploaded_file($ruta_img, $dir_imgs);  
 
-      $dir_imgs_cuarto = $id_casa."/".$id_cuarto."/imgs"."/".$nombre_img;
+      $dir_imgs_cuarto = $dir_general_imgs.$nombre_img;
 
-      $consulta_insert_imgs = "INSERT INTO casa(ruta_imagen_cuarto, fk_casa) VALUES('$dir_imgs_cuarto' ,'$id_cuarto')";
+      $consulta_insert_imgs = "INSERT INTO imagen_cuarto(ruta_imagen_cuarto, fk_cuarto) VALUES('$dir_imgs_cuarto' ,'$id_cuarto')";
       mysqli_query($conexion, $consulta_insert_imgs) or die(mysqli_error($conexion));
   }
 
