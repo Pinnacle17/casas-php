@@ -23,7 +23,7 @@
   $ruta_iprincipal = $_FILES['imgPrincipal']['tmp_name'];
 
 
-  $consulta_insert_casa = "INSERT INTO evento(
+  $consulta_insert_casa = "INSERT INTO casa(
   nombre_casa,
   nombre_casa_busqueda,
   direccion_casa, 
@@ -72,7 +72,7 @@
   move_uploaded_file($ruta_iprincipal, $dirprincipal);
 
   $dircarousel = $id_casa."/carousel"."/".$icarousel;
-  $dirprincipal = $id_casa."/principal"."/".$ievento;
+  $dirprincipal = $id_casa."/principal"."/".$iprincipal;
 
   $consulta_update_casa = "UPDATE casa SET carousel_img = '$dircarousel', principal_img = '$dirprincipal' WHERE id_casa = '$id_casa'";
   mysqli_query($conexion, $consulta_update_casa) or die (mysqli_error($conexion));
@@ -87,7 +87,7 @@
 
       $dir_imgs = $id_casa."/imgs"."/".$nombre_img;
 
-      $consulta_insert_imgs = "INSERT INTO casa(ruta_imagen_casa, fk_casa) VALUES('$dir_imgs' ,'$id_casa')";
+      $consulta_insert_imgs = "INSERT INTO imagen_casa(ruta_imagen_casa, fk_casa) VALUES('$dir_imgs' ,'$id_casa')";
       mysqli_query($conexion, $consulta_insert_imgs) or die(mysqli_error($conexion));
       
   }
