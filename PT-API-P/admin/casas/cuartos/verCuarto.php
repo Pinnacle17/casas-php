@@ -1,6 +1,6 @@
 <?php
-    require("../../headers.php");
-    require("../../conexion.php");
+    require("../../../headers.php");
+    require("../../../conexion.php");
 //mostrara la informacion general del cuarto
     $conexion = conexion();
     $registros = mysqli_query($conexion, "SELECT *FROM cuarto WHERE id_cuarto = $_GET[id_cuarto]");

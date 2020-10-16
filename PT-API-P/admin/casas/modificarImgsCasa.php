@@ -8,7 +8,7 @@
         $numimg = count($_FILES['imgs']["name"]);
         $imgs = $_FILES['imgs'];
 
-        $carpeta_imgs = "../../admin/assets/img/casas/".$id_evento."/"."imgs/";//ver ruta
+        $carpeta_imgs = "../../admin/assets/img/casas/".$id_casa."/"."imgs/";//ver ruta
 
         for($x=0; $x<$numimg; $x++){
             $nombre_img = $imgs["name"][$x];
@@ -16,7 +16,7 @@
 
             $dir_imgs = $carpeta_imgs.$nombre_img; //ver ruta
             move_uploaded_file($ruta_img, $dir_imgs);
-            $dir_imgs = $id_evento."/"."imgs/".$nombre_img;
+            $dir_imgs = $id_casa."/"."imgs/".$nombre_img;
 
             $consulta_insert_imgs = "INSERT INTO imagen_casa (ruta_imagen_casa, fk_casa) VALUES('$dir_imgs', '$id_casa')";
             mysqli_query($conexion, $consulta_insert_imgs) or die(mysqli_error($conexion));
