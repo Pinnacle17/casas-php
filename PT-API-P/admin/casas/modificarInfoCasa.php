@@ -10,7 +10,7 @@
     $descripcion = mysqli_real_escape_string($conexion, $_POST['descripcion_casa']);
     $nombrebusqueda = strtolower($nombre);
 
-    $consulta = "UPDATE casa SET nombre_casa = '$nombre', orden_anuncio = '$orden', nombre_casa_busqueda = '$nombrebusqueda', tipo_evento = '$tipo', descripcion_casa = '$descripcion' WHERE id_casa = '$id_casa'";
+    $consulta = "UPDATE casa SET nombre_casa = '$nombre', orden_anuncio = '$orden', nombre_casa_busqueda = '$nombrebusqueda', ambiente = '$tipo', descripcion_casa = '$descripcion' WHERE id_casa = '$id_casa'";
     $registro = mysqli_query($conexion,$consulta) or die(mysqli_error($conexion));   
 
     class Result {}
