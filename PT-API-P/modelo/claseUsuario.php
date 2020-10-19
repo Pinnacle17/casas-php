@@ -45,7 +45,23 @@ class Usuario extends BD{
 
             return $response;                
         }
-    }        
+    }
+    public static function Chat_estado($estado, $datos){
+        $consulta_select_chat = "SELECT *FROM chat WHERE estado_chat = '$estado'";
+        $resultado = BD::consultaSelect($consulta_select_chat);
+        if(mysqli_num_rows($resultado) > 0){
+            $x = 0;
+            while ($while = mysqli_fetch_array($resultado)){
+                foreach($campo as $datos){
+                    $chat[$x][$campo] = $while[$campo];
+                }
+                $x++;
+            }
+        }else{
+            $chat = null;
+        }
+        return $chat;
+    }         
 }
 ?>
 

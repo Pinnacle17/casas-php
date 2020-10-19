@@ -26,7 +26,20 @@ class Casa extends BD{
         }
         return $comentarios;
     }         
-    
+    public static function DatosCasaid($id_casa, $datos){
+        $consulta_select_casa = "SELECT *FROM casa WHERE id_casa = '$id_casa'";
+        $resultado = BD::consultaSelect($consulta_select_casa);
+        if(mysqli_num_rows($resultado) == 1){
+            while ($while = mysqli_fetch_array($resultado)){
+                foreach($campo as $datos){
+                    $casa[$campo] = $while[$campo];
+                }
+            }
+        }else{
+            $casa = null;
+        }
+        return $casa;
+    }
     
 }
 ?>
