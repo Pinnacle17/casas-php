@@ -17,8 +17,7 @@ $response = new Result();
             $x++;
         }
         for($y = 0; $y < $x; $y++){
-            $datos = ['nombre_casa'];
-            $nombre = Casa::DatosCasaid($casas[$y]['fk_casa'], $datos);
+            $nombre = Casa::DatosCasaid($casas[$y]['fk_casa']);
             $casas[$y]['nombre_casa'] = $nombre['nombre_casa'];
         }
     }else{

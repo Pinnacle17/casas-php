@@ -1,0 +1,33 @@
+<?php
+    require("../../headers.php");
+    require("../../BD.php");
+    require("../../conexion.php");
+
+    $conexion = conexion();
+    
+    $id_usuario = $_GET['id_usuario'];
+    $id_casa = $_GET['id_casa'];
+
+    $comentario = mysqli_real_escape_string($conexion, $_GET['comentario']);
+    $cal_instalaciones = mysqli_real_escape_string($conexion, $_GET['instalaciones']);
+    $cal_limpieza = mysqli_real_escape_string($conexion, $_GET['limpieza']);
+    $cal_ambiente = mysqli_real_escape_string($conexion, $_GET['ambiente']);
+    if(($cal_instalaciones < 5) || ($cal_limpieza < 5) || ($cal_ambiente < 5)){
+        $estado = 2;
+    }else{
+        $estado = 1;
+    }
+    $insertar_comentario = "INSERT INTO calificacion(limpieza, ambiente, instalaciones, comentario, estado, fk_usuario, fk_casa) VALUES ('$cal_limpieza', '$cal_ambiente', '$cal_instalaciones', '$comentario', '$estado', '$id_usuario', '$id_casa')";
+    BD::consultaSelect($insertar_comentario);
+
+    class Result {}
+
+    $response = new Result();
+    if(mysqli_error($conexion)){
+        $response->resultado = 'ERROR';
+    }
+    else{
+        $response->resultado = 'OK';
+    }
+    echo json_encode($response); 
+?>

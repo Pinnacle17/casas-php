@@ -17,8 +17,8 @@
         if($compra == null){
             //hay oferta, pero no se ha vendido, por lo que se pude preguntar por esta, se manda la variable oferta para mostrar los datos ded esta
         }else{
-            $datos = ['foto','nombre_usuario'];
-            $datos_compra_completos = Usuario::DatosUsuarioid($compra['fk_usuario'], $datos);
+            $datos_compra_completos = Usuario::DatosUsuarioid($compra['fk_usuario']);
+            //solo foto y nombrede usuario se van a mostrar
             //ademas de mostrar este mensaje, se mostrara el mensaje de que este usuario rento esta habitacion para el semestre seleccionado
         }
     }

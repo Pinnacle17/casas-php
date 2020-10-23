@@ -1,14 +1,12 @@
 <?php
 
 class Usuario extends BD{
-    public static function DatosUsuarioid($id_usuario, $datos){
-        $consulta_select_usuario = "SELECT *FROM usuario WHERE id_usuario = '$id_usuario'";
+    public static function DatosUsuarioid($id_usuario){
+        $consulta_select_usuario = "SELECT foto, nombre_usuario, celular, celular_ext FROM usuario WHERE id_usuario = '$id_usuario'";
         $resultado = BD::consultaSelect($consulta_select_usuario);
         if(mysqli_num_rows($resultado) == 1){
             while ($while = mysqli_fetch_array($resultado)){
-                foreach($campo as $datos){
-                    $usuario[$campo] = $while[$campo];
-                }
+                    $usuario[] = $while;
             }
         }else{
             $usuario = null;
@@ -46,22 +44,39 @@ class Usuario extends BD{
             return $response;                
         }
     }
-    public static function Chat_estado($estado, $datos){
-        $consulta_select_chat = "SELECT *FROM chat WHERE estado_chat = '$estado'";
+    
+    public static function verVentasUsuario($id_usuario){
+        $consulta_select_compra = "SELECT *FROM compra WHERE fk_usuario = '$id_usuario'";
         $resultado = BD::consultaSelect($consulta_select_chat);
         if(mysqli_num_rows($resultado) > 0){
             $x = 0;
             while ($while = mysqli_fetch_array($resultado)){
-                foreach($campo as $datos){
-                    $chat[$x][$campo] = $while[$campo];
-                }
-                $x++;
+                $rentas[$x]['id_compra'] = $while['id_compra'];
+                $rentas[$x]['pago'] = $while['pago'];
+                $rentas[$x]['fecha_compra'] = $while['fecha_compra'];
+                $rentas[$x]['fk_oferta'] = $while['fk_oferta'];
+                $rentas[$x]['fk_usuario'] = $while['fk_usuario'];
+                $x++; 
             }
         }else{
-            $chat = null;
+            $rentas = null;
         }
-        return $chat;
-    }         
+        return $rentas;
+    }
+    public static function verOfertaid($id_oferta){
+        $consulta_select_oferta = "SELECT *FROM oferta WHERE id_oferta = '$id_oferta'";
+        $resultado = BD::consultaSelect($consulta_select_oferta);
+        if(mysqli_num_rows($resultado) > 0){
+            while ($while = mysqli_fetch_array($resultado)){
+                $oferta[] = $while;
+            }
+        }else{
+            $oferta = null;
+        }
+        return $oferta;
+    }
+    
+        
 }
 ?>
 

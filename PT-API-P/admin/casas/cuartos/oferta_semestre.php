@@ -17,8 +17,8 @@
         if($compra == null){
             //hay oferta, pero no se ha tomado, se envia oferta, se activa el boton para eliminar la oferta
         }else{
-            $datos = ['foto','nombre_usuario','celular','celular_ext'];
-            $datos_compra_completos = Usuario::DatosUsuarioid($compra['fk_usuario'], $datos);
+            //'foto','nombre_usuario','celular','celular_ext' datos que necesitamo de el metodo datosusuarioid
+            $datos_compra_completos = Usuario::DatosUsuarioid($compra['fk_usuario']);
             if($compra['pago'] == 1){
                 $datos_compra_completos['pago'] = "Pagado";
             }else{

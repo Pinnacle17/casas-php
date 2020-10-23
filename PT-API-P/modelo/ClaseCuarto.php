@@ -38,6 +38,29 @@ class Cuarto extends BD{
         }
         return $promocion;
     } 
-    
+    public static function DatosCuartoid($id_cuarto){
+        $consulta_select_cuarto = "SELECT nombre_cuarto, fk_casa FROM cuarto WHERE id_cuarto = '$id_cuarto'";
+        $resultado = BD::consultaSelect($consulta_select_cuarto);
+        if(mysqli_num_rows($resultado) == 1){
+            while ($while = mysqli_fetch_array($resultado)){
+                $cuarto[] = $while;
+            }
+        }else{
+            $cuarto = null;
+        }
+        return $cuarto;
+    }
+    public static function DatosSemestreid($id_semestre){
+        $consulta_select_semestre = "SELECT nombre FROM semestre WHERE id_semestre = '$id_semestre'";
+        $resultado = BD::consultaSelect($consulta_select_semestre);
+        if(mysqli_num_rows($resultado) == 1){
+            while ($while = mysqli_fetch_array($resultado)){
+                $semestre[] = $while;
+            }
+        }else{
+            $semestre = null;
+        }
+        return $semestre;
+    }
 }
 ?>
