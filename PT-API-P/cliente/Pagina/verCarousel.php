@@ -1,6 +1,6 @@
 <?php
-    require("../headers.php");
-    require("../conexion.php");
+    require("../../headers.php");
+    require("../../conexion.php");
 
     $conexion = conexion();
 

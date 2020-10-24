@@ -7,8 +7,8 @@
     $conexion = conexion();
     $id_chat = $_GET['id_chat'];
     $mensaje = mysqli_real_escape_string($conexion, $_GET['mensaje']);
-    Chat::InsertarMensaje($id_chat, $mensaje, 0);
-    Chat::UpdateNotificacion($id_chat, 0);
+    Chat::InsertarMensaje($id_chat, $mensaje, 1);
+    Chat::UpdateNotificacion($id_chat, 1);
     class Result {}
 
     $response = new Result();

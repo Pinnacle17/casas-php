@@ -75,7 +75,10 @@ class Usuario extends BD{
         }
         return $oferta;
     }
-    
+    public static function EstadoUsuario($id_usuario, $estado){
+        $consulta_update_usuario = "UPDATE usuario SET estado = '$estado' WHERE id_usuario = '$id_usuario'";
+        BD::consultaSelect($consulta_update_usuario);
+    }
         
 }
 ?>

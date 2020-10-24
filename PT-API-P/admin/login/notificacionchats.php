@@ -10,13 +10,9 @@ class Result {}
 $response = new Result();
     $usuario = Chat::Chat_estado(2);
     if($usuario == null){
-       //es null y no mostrara nada 
+       $chats = 0;//no hay chats activos
     }else{
-        $cantidad_chats = count($usuario);
-        for($x = 0; $x<$cantidad_chats; $x++){
-            $nombre = Usuario::DatosUsuarioid($usuario['fk_usuario']);
-            $usuario[$x]['nombre_usuario'] = $nombre['nombre_usuario'];
-        }
+        $chats = 1;//hay chats activos 
     }
     $json = json_encode($usuario);
 

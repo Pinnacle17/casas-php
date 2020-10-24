@@ -15,6 +15,7 @@
         }else if($chat['estado_chat'] == 3){
             $resultado['estado_chat'] = "Terminado por el administrador";
         }
+        $resultado['fk_oferta'] = $chat['fk_oferta'];
         $oferta = Usuario::verOfertaid($chat['fk_oferta']);
         $resultado['precio'] = $oferta['precio'];
         $cuarto = Cuarto::DatosCuartoid($oferta['fk_cuarto']);

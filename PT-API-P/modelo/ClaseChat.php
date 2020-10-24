@@ -8,8 +8,7 @@ class Chat extends BD{
         $resultado = BD::consultaSelect($consulta_insert_mensaje);
         return $oferta;
     }
-    public static function UpdateEstadoChat($id_chat, $estado){
-        $fecha = date("Y-m-d H:i:s"); 
+    public static function UpdateEstadoChat($id_chat, $estado){ 
         $consulta_update_chat = "UPDATE chat SET estado_chat = '$estado' WHERE id_chat = '$id_chat'";
         $resultado = BD::consultaSelect($consulta_update_chat);
         return $oferta;
@@ -70,6 +69,26 @@ class Chat extends BD{
             $mensajes = null;
         }
         return $chat;
+    }
+    public static function Chats_estado($estado){
+        $consulta_select_chat = "SELECT *FROM chat WHERE estado_chat = '$estado'";
+        $resultado = BD::consultaSelect($consulta_select_chat);
+        if(mysqli_num_rows($resultado) > 0){
+            $x = 0;
+            while ($while = mysqli_fetch_array($resultado)){
+                $chats[$x]['fk_usuario'] = $while['fk_usuario'];
+                $x++;
+            }
+        }else{
+            $chats = null;
+        }
+        return $chats;
+    }
+    
+    public static function UpdateNotificacion($id_chat, $notificacion){ 
+        $consulta_update_chat = "UPDATE chat SET notificacion = '$notificacion' WHERE id_chat = '$id_chat'";
+        $resultado = BD::consultaSelect($consulta_update_chat);
+        return $oferta;
     }
 }
 ?>
