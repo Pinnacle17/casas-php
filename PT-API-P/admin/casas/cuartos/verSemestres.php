@@ -9,7 +9,7 @@
         $semestres[] = $resultado;
     }
 
-    $json = json_encode($colonias);
+    $json = json_encode($semestres);
     echo $json;
 
 ?>

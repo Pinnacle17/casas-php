@@ -9,8 +9,8 @@
   $descripcion = mysqli_real_escape_string($conexion, $_POST['descripcion_cuarto']);
   $numimg = count($_FILES['imgsCuarto']["name"]);
   $imgs = $_FILES['imgsCuarto'];
-  $iprincipal = $_FILES['imgPrincipal']['name'];
-  $ruta_iprincipal = $_FILES['imgPrincipal']['tmp_name'];
+  $iprincipal = $_FILES['imgPrincipalCuarto']['name'];
+  $ruta_iprincipal = $_FILES['imgPrincipalCuarto']['tmp_name'];
 
 
   $consulta_insert_cuarto = "INSERT INTO cuarto(
@@ -49,7 +49,7 @@
 
   $dirprincipal = $id_casa."/".$id_cuarto."/principal"."/".$iprincipal;
 
-  $consulta_update_cuarto = "UPDATE cuarto SET principal_img = '$dirprincipal' WHERE id_casa = '$id_casa'";
+  $consulta_update_cuarto = "UPDATE cuarto SET principal_img = '$dirprincipal' WHERE fk_casa = '$id_casa'";
   mysqli_query($conexion, $consulta_update_cuarto) or die (mysqli_error($conexion));
   $dir_general_imgs = $id_casa."/".$id_cuarto."/imgs"."/";
   for($x=0; $x<$numimg; $x++){

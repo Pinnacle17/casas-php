@@ -2,7 +2,7 @@
 
 class Casa extends BD{
 
-    public static function VerComentariosNormales($id_casa, $estado){
+    public static function VerComentarios($id_casa, $estado){
         $consulta_select_comentario = "SELECT *FROM calificacion WHERE fk_casa = '$id_casa' AND estado = '$estado'";
         $resultado = BD::consultaSelect($consulta_select_comentario);
         if(mysqli_num_rows($resultado) > 0){

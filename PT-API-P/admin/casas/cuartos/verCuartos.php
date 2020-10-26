@@ -3,13 +3,13 @@
     require("../../../conexion.php");
 //mostrara la informacion general del cuarto
     $conexion = conexion();
-    $registros = mysqli_query($conexion, "SELECT *FROM cuarto WHERE id_cuarto = $_GET[id_cuarto]");
-    $cuarto = [];
+    $registros = mysqli_query($conexion, "SELECT *FROM cuarto WHERE fk_casa = $_GET[id_casa]");
+    $cuartos = [];
     while ($resultado = mysqli_fetch_array($registros)){
-        $cuarto[] = $resultado;
+        $cuartos[] = $resultado;
     }
     //no mostrar fecha
-    $json = json_encode($cuarto);
+    $json = json_encode($cuartos);
     echo $json;
 
 ?>

@@ -5,7 +5,7 @@
     $id_cuarto = mysqli_real_escape_string($conexion, $_POST['id_cuarto']);
     $id_semestre = mysqli_real_escape_string($conexion, $_POST['id_semestre']);
     $grupo = mysqli_real_escape_string($conexion, $_POST['grupo']);
-    $precio = mysqli_real_escape_string($conexion, $_POST['id_semestre']);
+    $precio = mysqli_real_escape_string($conexion, $_POST['precio']);
     $consulta_insert_oferta = "INSERT INTO oferta(
         precio, 
         grupo,
