@@ -14,18 +14,17 @@
         $casa = [];
         $x = 0;
         while ($resultado = mysqli_fetch_array($registros)){
-            $casa[$x]['id_casa'] = $resultado[$x]['id_casa'];
-            $casa[$x]['nombre_casa'] = $resultado[$x]['nombre_casa'];
-            $casa[$x]['estado_casa'] = $resultado[$x]['estado_casa'];
-            $casa[$x]['orden_anuncio'] = $resultado[$x]['orden_anuncio'];
-            if($casa[$x]['estado_casa'] == 1){
+            $casa[$x]['id_casa'] = $resultado['id_casa'];
+            $casa[$x]['nombre_casa'] = $resultado['nombre_casa'];
+            $casa[$x]['orden_anuncio'] = $resultado['orden_anuncio'];
+            if($resultado['estado_casa'] == 1){
                 $casa[$x]['estado_casa'] = "Activa";
-            }else if($casa[$x]['estado_casa'] == 0){
-                $carousel[$x]['estado_casa'] = "Inactiva";
+            }else if($resultado['estado_casa'] == 0){
+                $casa[$x]['estado_casa'] = "Inactiva";
             }
             $x++;
         }
-        $json = json_encode($carousel);
+        $json = json_encode($casa);
         echo $json;
     }
     
