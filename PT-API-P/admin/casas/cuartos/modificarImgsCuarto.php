@@ -1,9 +1,11 @@
 <?php
     require("../../../headers.php");
     require("../../../conexion.php"); 
+    require("../../../modelo/ClaseCuarto.php");
     $conexion = conexion();
-    $id_casa = mysqli_real_escape_string($conexion, $_POST['id_casa']);
-    $id_cuarto = mysqli_real_escape_string($conexion, $_POST['id_casa']);
+    $id_cuarto = mysqli_real_escape_string($conexion, $_POST['id_cuarto']);
+    $cuarto = Cuarto::DatosCuartoid($id_cuarto); 
+    $id_casa = $cuarto['fk_casa'];
     if(!empty($_FILES['imgs'])){
         $numimg = count($_FILES['imgs']["name"]);
         $imgs = $_FILES['imgs'];
