@@ -7,8 +7,7 @@
     
     $response = new Result();
 
-    $nombre = mysqli_real_escape_string($conexion, $_GET['nombre']);
-    $nombre = strtolower($nombre);
+    $nombre = mysqli_real_escape_string($conexion, $_GET['titulo']);
 
     $consulta = "SELECT titulo_pub_busqueda FROM publicacion WHERE titulo_pub = '$nombre'";
     $registros = mysqli_query($conexion, $consulta);
