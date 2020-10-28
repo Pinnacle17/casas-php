@@ -9,10 +9,10 @@
     $eventos_recientes = [];
 
     while ($resultado = mysqli_fetch_array($registros)){
-        $$eventos_recientes[] = $resultado;
+        $eventos_recientes[] = $resultado;
     }
 
-    $json = json_encode($$eventos_recientes);
+    $json = json_encode($eventos_recientes);
 
     echo $json;
 

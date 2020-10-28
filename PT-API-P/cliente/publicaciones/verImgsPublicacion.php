@@ -4,7 +4,7 @@
 
     $conexion = conexion();
 
-    $registros = mysqli_query($conexion, "SELECT * FROM imagen_pub WHERE fk_publicacion=$_GET[id_pub]");
+    $registros = mysqli_query($conexion, "SELECT * FROM imagen_pub WHERE fk_publicacion=$_GET[id_publicacion]");
 
     $imgs = [];
     while ($resultado = mysqli_fetch_array($registros)){
