@@ -1,9 +1,9 @@
 <?php
-    require("../../../headers.php");
-    require("../../../conexion.php");
-    require("../../../BD.php");
-    require("../../../modelo/ClaseChat.php");
-    require("../../../modelo/ClaseUsuario.php");
+    require("../../headers.php");
+    require("../../conexion.php");
+    require("../../BD.php");
+    require("../../modelo/ClaseChat.php");
+    require("../../modelo/ClaseUsuario.php");
 
     $conexion = conexion();
     $id_chat = $_GET['id_chat'];

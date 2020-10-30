@@ -5,7 +5,7 @@
     require("../../../modelo/ClaseChat.php");
 
     $id_chat = $_GET['id_chat'];
-    Chat::UpdateEstadoChat($id_chat, 4);
+    Chat::UpdateEstadoNotificacion($id_chat, 4);
     class Result {}
 
     $response = new Result();

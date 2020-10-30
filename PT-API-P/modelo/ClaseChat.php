@@ -71,12 +71,34 @@ class Chat extends BD{
         return $chat;
     }
     public static function Chats_estado($estado){
-        $consulta_select_chat = "SELECT *FROM chat WHERE estado_chat = '$estado'";
+        $consulta_select_chat = "SELECT *FROM chat WHERE estado_chat = '$estado' AND (notificacion != '0' OR notificacion != '2')";
         $resultado = BD::consultaSelect($consulta_select_chat);
         if(mysqli_num_rows($resultado) > 0){
             $x = 0;
             while ($while = mysqli_fetch_array($resultado)){
                 $chats[$x]['fk_usuario'] = $while['fk_usuario'];
+                $chats[$x]['fk_oferta'] = $while['fk_oferta'];
+                $chats[$x]['id_chat'] = $while['id_chat'];
+                $chats[$x]['estado_chat'] = $while['estado_chat'];
+                $chats[$x]['notificacion'] = $while['fk_usuario'];
+                $x++;
+            }
+        }else{
+            $chats = null;
+        }
+        return $chats;
+    }
+    public static function Chats_notificacion(){
+        $consulta_select_chat = "SELECT *FROM chat WHERE notificacion = '0' OR notificacion = '2'";
+        $resultado = BD::consultaSelect($consulta_select_chat);
+        if(mysqli_num_rows($resultado) > 0){
+            $x = 0;
+            while ($while = mysqli_fetch_array($resultado)){
+                $chats[$x]['fk_usuario'] = $while['fk_usuario'];
+                $chats[$x]['fk_oferta'] = $while['fk_oferta'];
+                $chats[$x]['id_chat'] = $while['id_chat'];
+                $chats[$x]['estado_chat'] = $while['estado_chat'];
+                $chats[$x]['notificacion'] = $while['fk_usuario'];
                 $x++;
             }
         }else{
@@ -89,6 +111,23 @@ class Chat extends BD{
         $consulta_update_chat = "UPDATE chat SET notificacion = '$notificacion' WHERE id_chat = '$id_chat'";
         $resultado = BD::consultaSelect($consulta_update_chat);
         return $oferta;
+    }
+
+    public static function DatosPagoEstado($id_usuario, $pago){
+        $consulta_select_chat = "SELECT *FROM compra WHERE fk_usuario = '$id_usuario' AND pago = '$pago'";
+        $resultado = BD::consultaSelect($consulta_select_chat);
+        if(mysqli_num_rows($resultado) > 0){
+            $x = 0;
+            while ($while = mysqli_fetch_array($resultado)){
+                $pagos[$x]['id_compra'] = $while['id_compra'];
+                $pagos[$x]['fecha_compra'] = $while['fecha_compra'];
+                $pagos[$x]['fk_oferta'] = $while['fk_oferta'];
+                $x++;
+            }
+        }else{
+            $pagos = null;
+        }
+        return $pagos;
     }
 }
 ?>

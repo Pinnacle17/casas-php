@@ -38,7 +38,8 @@
     }
     else{
         $response->resultado = 'OK';
-        $response->usuario = $usuario;
+        $response->id_usuario = $usuario['id_usuario'];
+        $response->estado = $usuario['estado'];
     }
   
     echo json_encode($response);
