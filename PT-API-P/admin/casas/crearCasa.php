@@ -53,16 +53,16 @@
       $id_casa = $resultado["id_casa"];
   }
 
-  $carpeta_casa = "../../../admin/assets/img/casas/".$id_casa;
+  $carpeta_casa = "../assets/img/casas/".$id_casa;
   mkdir($carpeta_casa, 0777, true);
 
-  $carpeta_iprincipal = "../../../admin/assets/img/casas/".$id_casa."/"."principal";
+  $carpeta_iprincipal = "../assets/img/casas/".$id_casa."/"."principal";
   mkdir($carpeta_iprincipal, 0777, true);
 
-  $carpeta_icarousel = "../../../admin/assets/img/casas/".$id_casa."/"."carousel";
+  $carpeta_icarousel = "../assets/img/casas/".$id_casa."/"."carousel";
   mkdir($carpeta_icarousel, 0777, true);
 
-  $carpeta_imgs = "../../../admin/assets/img/casas/".$id_casa."/"."imgs";
+  $carpeta_imgs = "../assets/img/casas/".$id_casa."/"."imgs";
   mkdir($carpeta_imgs, 0777, true);
 
   $dircarousel = $carpeta_icarousel."/".$icarousel;

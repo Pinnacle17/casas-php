@@ -8,7 +8,7 @@
         $numimg = count($_FILES['imgs']["name"]);
         $imgs = $_FILES['imgs'];
 
-        $carpeta_imgs = "../../admin/assets/img/casas/".$id_casa."/"."imgs/";//ver ruta
+        $carpeta_imgs = "../assets/img/casas/".$id_casa."/"."imgs/";//ver ruta
 
         for($x=0; $x<$numimg; $x++){
             $nombre_img = $imgs["name"][$x];
@@ -33,7 +33,7 @@
             $carousel_img = $resultado["carousel_img"];
         }
 
-        $carpeta_casa = "../../admin/assets/img/casas/";
+        $carpeta_casa = "../assets/img/casas/";
         $dircarousel = $id_casa."/carousel"."/".$icarousel; //ver si ruta es correcta
         $ruta_img = $carpeta_casa.$carousel_img; //poner la ruta para llegar a la imagen
 
@@ -54,7 +54,7 @@
             $principal_img = $resultado["principal_img"];
         }
 
-        $carpeta_casa = "../../admin/assets/img/casas/";
+        $carpeta_casa = "../assets/img/casas/";
         $dircasa = $id_casa."/principal"."/".$iprincipal;
         $ruta_img_vieja = $carpeta_casa.$principal_img;
 

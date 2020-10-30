@@ -43,7 +43,8 @@ class Cuarto extends BD{
         $resultado = BD::consultaSelect($consulta_select_cuarto);
         if(mysqli_num_rows($resultado) == 1){
             while ($while = mysqli_fetch_array($resultado)){
-                $cuarto[] = $while;
+                $cuarto['fk_casa'] = $while['fk_casa'];
+                $cuarto['nombre_cuarto'] = $while['nombre_cuarto'];
             }
         }else{
             $cuarto = null;

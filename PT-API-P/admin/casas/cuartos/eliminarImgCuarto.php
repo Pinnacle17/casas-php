@@ -9,7 +9,7 @@
         $ruta_imagen_cuarto = $resultado["ruta_imagen_cuarto"];
     }
 
-    unlink("../../../../admin/assets/img/casas/".$ruta_imagen_cuarto);
+    unlink("../../assets/img/casas/".$ruta_imagen_cuarto);
 
     $eliminar_img = "DELETE FROM imagen_cuarto WHERE  id_imagen_cuarto= '$id_imagen_cuarto'";
     $registro = mysqli_query($conexion, $eliminar_img) or die (mysqli_error($conexion));
