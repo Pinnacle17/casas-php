@@ -4,39 +4,36 @@
     require("../../../BD.php");
     require("../../../modelo/ClaseCuarto.php");
     $conexion = conexion();
-    $id_cuarto = mysqli_real_escape_string($conexion, $_POST['id_cuarto']);
-    $id_semestre = mysqli_real_escape_string($conexion, $_POST['id_semestre']);
-    class Result {}
-
-    $response = new Result();
+    $id_cuarto = mysqli_real_escape_string($conexion, $_GET['id_cuarto']);
+    $id_semestre = mysqli_real_escape_string($conexion, $_GET['id_semestre']);
+    $datos_compra_completos = [];
     $oferta = Cuarto::VerOfertaCuarto($id_cuarto, $id_semestre);
+    
     if($oferta == null){
-        //no hay oferta, se puede crear una
+        $datos_compra_completos['tipo'] = 0;
     }else{
         $compra = Cuarto::VerCompraCuarto($oferta['fk_oferta']);
         if($compra == null){
-            //hay oferta, pero no se ha tomado, se envia oferta, se activa el boton para eliminar la oferta
+            $datos_compra_completos['tipo'] = 1;
+            $datos_compra_completos['grupo'] = $oferta['grupo'];
+            $datos_compra_completos['precio'] = $oferta['precio'];
         }else{
-            //'foto','nombre_usuario','celular','celular_ext' datos que necesitamo de el metodo datosusuarioid
-            $datos_compra_completos = Usuario::DatosUsuarioid($compra['fk_usuario']);
+            $usuario = Usuario::DatosUsuarioid($compra['fk_usuario']);
             if($compra['pago'] == 1){
                 $datos_compra_completos['pago'] = "Pagado";
             }else{
                 $datos_compra_completos['pago'] = "No se ha confirmado el pago";
             }
+            $datos_compra_completos['fk_usuario'] = $compra['fk_usuario'];
+            $datos_compra_completos['foto'] = $usuario['foto'];
+            $datos_compra_completos['nombre_usuario'] = $usuario['nombre_usuario'];
+            $datos_compra_completos['celular'] = $usuario['celular'];
+            $datos_compra_completos['celular_ext'] = $usuario['celular_ext'];
             $datos_compra_completos['fecha_compra'] = $compra['fecha_compra'];
-            $datos_compra_completos['precio'] = $oferta['precio'];
-            //se envia todo
+            $datos_compra_completos['tipo'] = 2;
         }
     }
 
-  if(mysqli_error($conexion)){
-      $response->resultado = 'ERROR';
-  }
-  else{
-      $response->resultado = 'OK';
-  }
-
-  echo json_encode($response); 
+  echo json_encode($datos_compra_completos); 
 
 ?>
