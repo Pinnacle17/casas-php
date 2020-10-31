@@ -6,13 +6,13 @@
     $conexion = conexion();
     $id_cuarto = mysqli_real_escape_string($conexion, $_POST['id_cuarto']);
     $cuarto = Cuarto::DatosCuartoid($id_cuarto); 
-    // $id_casa = $cuarto['fk_casa'];
-    $id_casa =1;
+    $id_casa = $cuarto['fk_casa'];
+
     if(!empty($_FILES['imgs'])){
         $numimg = count($_FILES['imgs']["name"]);
         $imgs = $_FILES['imgs'];
 
-        $carpeta_imgs = "../../../../admin/assets/img/casas/".$id_casa."/".$id_cuarto."/imgs"."/";//ver ruta
+        $carpeta_imgs = "../../assets/img/casas/".$id_casa."/".$id_cuarto."/imgs"."/";//ver ruta
 
         for($x=0; $x<$numimg; $x++){
             $nombre_img = $imgs["name"][$x];
@@ -37,11 +37,11 @@
             $principal_img = $resultado["principal_img"];
         }
 
-        $carpeta_casa = "../../../../admin/assets/img/casas/";
+        $carpeta_casa = "../../assets/img/casas/";
         $dirprincipal = $id_casa."/".$id_cuarto."/principal"."/".$iprincipal;
         $ruta_img_vieja = $carpeta_casa.$principal_img;
 
-        unlink($ruta_img_vieja);
+        // unlink($ruta_img_vieja);
         move_uploaded_file($ruta_iprincipal, $carpeta_casa.$dirprincipal);
 
         $update_principal_cuarto = "UPDATE cuarto SET principal_img = '$dirprincipal' WHERE id_cuarto = '$id_cuarto'";
