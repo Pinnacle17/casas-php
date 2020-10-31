@@ -1,6 +1,9 @@
 <?php
     require("../../../headers.php");
     require("../../../conexion.php");
+    require("../../../BD.php");
+    require("../../../modelo/claseUsuario.php");
+    require("../../../modelo/clase.php");
 
     $conexion = conexion();
 
@@ -10,6 +13,9 @@
         while ($resultado = mysqli_fetch_array($registros)){
             $comentario[] = $resultado;
         }
+        $usuario = Usuario::DatosUsuarioid($comentario['fk_usuario']);
+        $comentario['fk_usuario'] = $usuario['nombre_usuario'];
+        $comentario['foto'] = $usuario['foto'];
         echo json_encode($comentario);//no puede comentar y muestra el comentario
     }else{
         echo json_encode(null);//puede pasar al siguiente filtro

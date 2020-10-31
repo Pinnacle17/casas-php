@@ -6,7 +6,7 @@
 
     $conexion = conexion();
     $id_casa = $_GET['id_casa'];
-    $id_casa = $_POST['id_usuario'];
+    $id_usuario = $_GET['id_usuario'];
     $consulta_select_cuartos = "SELECT id_cuarto FROM cuarto WHERE fk_casa = '$id_casa'";
     $resultado_cuartos = BD::consultaSelect($consulta_select_cuartos);
     $ventas = Usuario::verVentasUsuario($id_usuario);
