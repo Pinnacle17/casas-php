@@ -3,16 +3,16 @@
     require("../../conexion.php");
     $conexion = conexion();
     //CACHA TODO TODOS LOS DATOS QUE FUERON ENVIADOS DESDE UNA PETICION HTTP
-    $id_facebook = mysqli_real_escape_string($conexion,$_POST['id_facebook']);//id de facebook
-    $foto = mysqli_real_escape_string($conexion,$_POST['foto']);//foto de facebook
-    $nombre_usuario = mysqli_real_escape_string($conexion,$_POST['nombre_usuario']);//nombre que proporciona facebook
+    $id_facebook = mysqli_real_escape_string($conexion,$_POST['id']);//id de facebook
+    $foto = mysqli_real_escape_string($conexion,$_POST['photoUrl']);//foto de facebook
+    $nombre_usuario = mysqli_real_escape_string($conexion,$_POST['name']);//nombre que proporciona facebook
 
     $consulta_registro = "SELECT *FROM usuario WHERE id_facebook = '$id_facebook'";
     $resultado = mysqli_query($conexion,$consulta_registro) or die (mysqli_error($conexion));
     if(mysqli_num_rows($resultado) <= 0){
         //SENTENCIA SQL
         $nombre_busqueda = strtolower($nombre_usuario);
-        $consulta_insert_usuario = "INSERT INTO usuario (id_facebook, foto, nombre_usuario, nombre_busqueda, estado) VALUES('$id_facebook','$foto','$nombre_usuario', '$nombre_busqueda', '0')";
+        $consulta_insert_usuario = "INSERT INTO usuario (id_facebook, foto, nombre_usuario, nombre_busqueda, estado) VALUES('$id_facebook','$foto','$nombre_usuario', '$nombre_busqueda', 0)";
         //EJECUTA LA SENTENCIA SQL
         mysqli_query($conexion,$consulta_insert_usuario) or die (mysqli_error($conexion));
     }
