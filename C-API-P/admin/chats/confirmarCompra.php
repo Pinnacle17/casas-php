@@ -10,7 +10,7 @@
     
     $consulta_oferta_chat = "SELECT id_chat FROM chat WHERE fk_oferta = '$id_oferta' AND id_chat != '$id_chat'";
     $registro_oferta = BD::consultaSelect($consulta_oferta_chat);
-    if(mysqli_num_rows($registro_oferta) > 1){
+    if(mysqli_num_rows($registro_oferta) > 0){
         $mensaje = "La oferta por la que se pregunto ya fue tomada, lamentamos las moletias.";    
         while($chat = mysqli_fetch_array($registro_oferta)){   
             Chat::InsertarMensaje($chat['id_chat'], $mensaje, 1);

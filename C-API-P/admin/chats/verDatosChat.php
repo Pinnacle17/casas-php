@@ -1,4 +1,6 @@
 <?php
+
+    //ver los datos generales del chat
     require("../../headers.php");
     require("../../BD.php");
     require("../../modelo/ClaseChat.php");

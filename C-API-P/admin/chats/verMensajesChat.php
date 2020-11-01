@@ -1,4 +1,6 @@
 <?php
+
+//ver los mensajes
     require("../../headers.php");
     require("../../BD.php");
     require("../../modelo/ClaseChat.php");
