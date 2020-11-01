@@ -47,7 +47,7 @@ class Chat extends BD{
         return $chats;
     }
     public static function ChatId($id_chat){
-        $consulta_select_chat = "SELECT *FROM chat WHERE fk_usuario = '$id_usuario'";
+        $consulta_select_chat = "SELECT *FROM chat WHERE id_chat = '$id_chat'";
         $resultado = BD::consultaSelect($consulta_select_chat);
         if(mysqli_num_rows($resultado) > 0){
             while ($while = mysqli_fetch_array($resultado)){
@@ -91,15 +91,10 @@ class Chat extends BD{
     public static function Chats_notificacion(){
         $consulta_select_chat = "SELECT *FROM chat WHERE notificacion = '0' OR notificacion = '2'";
         $resultado = BD::consultaSelect($consulta_select_chat);
+        $chats = [];
         if(mysqli_num_rows($resultado) > 0){
-            $x = 0;
             while ($while = mysqli_fetch_array($resultado)){
-                $chats[$x]['fk_usuario'] = $while['fk_usuario'];
-                $chats[$x]['fk_oferta'] = $while['fk_oferta'];
-                $chats[$x]['id_chat'] = $while['id_chat'];
-                $chats[$x]['estado_chat'] = $while['estado_chat'];
-                $chats[$x]['notificacion'] = $while['fk_usuario'];
-                $x++;
+                $chats[] = $while;
             }
         }else{
             $chats = null;

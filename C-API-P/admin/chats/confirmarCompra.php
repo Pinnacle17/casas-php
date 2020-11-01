@@ -4,14 +4,15 @@
     require("../../modelo/ClaseChat.php");
 
     $id_chat = $_POST['id_chat'];
-    $id_oferta = $_POST['fk_oferta'];
-    $id_usuario = $_POST['id_usuario'];
+    $chat = Chat::ChatId($id_chat);
+    $id_oferta = $chat[0]['fk_oferta'];
+    $id_usuario = $chat[0]['fk_usuario'];
     
-    $consulta_oferta_chat = "SELECT id_chat FROM chat WHERE fk_oferta = '$id_oferta'";
+    $consulta_oferta_chat = "SELECT id_chat FROM chat WHERE fk_oferta = '$id_oferta' AND id_chat != '$id_chat'";
     $registro_oferta = BD::consultaSelect($consulta_oferta_chat);
     if(mysqli_num_rows($registro_oferta) > 1){
-        while($chat = mysqli_fetch_array($registro_oferta)){
-            $mensaje = "La oferta por la que se pregunto ya fue tomada, lamentamos las moletias.";       
+        $mensaje = "La oferta por la que se pregunto ya fue tomada, lamentamos las moletias.";    
+        while($chat = mysqli_fetch_array($registro_oferta)){   
             Chat::InsertarMensaje($chat['id_chat'], $mensaje, 1);
             Chat::UpdateEstadoChat($chat['id_chat'], 3);
             Chat::UpdateNotificacion($chat['id_chat'], 3);
