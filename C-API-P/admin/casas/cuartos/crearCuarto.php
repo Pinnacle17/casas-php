@@ -24,7 +24,7 @@
   '$fecha',
   '1', 
   '$id_casa')";
-
+  
   mysqli_query($conexion, $consulta_insert_cuarto) or die (mysqli_error($conexion));
 
   $consulta_select_id = "SELECT id_cuarto FROM cuarto WHERE creacion_cuarto = '$fecha'";
@@ -35,7 +35,7 @@
       $id_cuarto = $resultado["id_cuarto"];
   }
 
-  $carpeta_cuarto = "../../../../admin/assets/img/casas/".$id_casa."/".$id_cuarto;
+  $carpeta_cuarto = "../../admin/assets/img/casas/".$id_casa."/".$id_cuarto;
   mkdir($carpeta_cuarto, 0777, true);
 
   $carpeta_iprincipal = $carpeta_cuarto."/principal";
