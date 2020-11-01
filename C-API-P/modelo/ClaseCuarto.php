@@ -15,7 +15,7 @@ class Cuarto extends BD{
         return $cuartos;
     }
     public static function VerOfertaCuarto($id_cuarto, $id_semestre){
-        $consulta_select_promocion = "SELECT *FROM oferta WHERE fk_cuarto = '$id_cuarto' AND fk_semestre = '$id_semestre'";
+        $consulta_select_promocion = "SELECT * FROM oferta WHERE fk_cuarto = '$id_cuarto' AND fk_semestre = '$id_semestre'";
         $resultado = BD::consultaSelect($consulta_select_promocion);
         if(mysqli_num_rows($resultado) == 1){
             while ($while = mysqli_fetch_array($resultado)){

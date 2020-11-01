@@ -7,16 +7,20 @@
     $id_cuarto = mysqli_real_escape_string($conexion, $_GET['id_cuarto']);
     $id_semestre = mysqli_real_escape_string($conexion, $_GET['id_semestre']);
     $datos_compra_completos = [];
+    $oferta=[];
+    $compra=[];
+    $usuario=[];
     $oferta = Cuarto::VerOfertaCuarto($id_cuarto, $id_semestre);
     
     if($oferta == null){
         $datos_compra_completos['tipo'] = 0;
     }else{
-        $compra = Cuarto::VerCompraCuarto($oferta['fk_oferta']);
+        $compra = Cuarto::VerCompraCuarto($oferta[0]['id_oferta']);
+        $datos_compra_completos['grupo'] = $oferta[0]['grupo'];
+        $datos_compra_completos['precio'] = $oferta[0]['precio'];
+        $datos_compra_completos['fk_oferta'] = $oferta[0]['id_oferta'];
         if($compra == null){
             $datos_compra_completos['tipo'] = 1;
-            $datos_compra_completos['grupo'] = $oferta['grupo'];
-            $datos_compra_completos['precio'] = $oferta['precio'];
         }else{
             $usuario = Usuario::DatosUsuarioid($compra['fk_usuario']);
             if($compra['pago'] == 1){
