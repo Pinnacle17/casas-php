@@ -21,7 +21,7 @@
     }
 
     $fecha = date("Y-m-d H:i:s"); 
-    $consulta_insert_compra = "INSERT INTO compra(pago, fecha_compra, fk_oferta, fk_usuario) VALUES ('0', $fecha, $id_oferta, $id_usuario)";
+    $consulta_insert_compra = "INSERT INTO compra(pago, fecha_compra, fk_oferta, fk_usuario) VALUES ('0', '$fecha', '$id_oferta', '$id_usuario')";
     BD::consultaSelect($consulta_insert_compra);
     Chat::UpdateEstadoChat($id_chat, 4);
     Chat::UpdateNotificacion($id_chat, 4);
