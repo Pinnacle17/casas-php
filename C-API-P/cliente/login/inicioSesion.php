@@ -11,8 +11,9 @@
     $resultado = mysqli_query($conexion,$consulta_registro) or die (mysqli_error($conexion));
     if(mysqli_num_rows($resultado) <= 0){
         //SENTENCIA SQL
+        $fecha = date("Y-m-d H:i:s"); 
         $nombre_busqueda = strtolower($nombre_usuario);
-        $consulta_insert_usuario = "INSERT INTO usuario (id_facebook, foto, nombre_usuario, nombre_busqueda, estado) VALUES('$id_facebook','$foto','$nombre_usuario', '$nombre_busqueda', 0)";
+        $consulta_insert_usuario = "INSERT INTO usuario (id_facebook, foto, nombre_usuario, nombre_busqueda, estado, fec_cre_usu) VALUES('$id_facebook','$foto','$nombre_usuario', '$nombre_busqueda', '0', '$fecha')";
         //EJECUTA LA SENTENCIA SQL
         mysqli_query($conexion,$consulta_insert_usuario) or die (mysqli_error($conexion));
     }
