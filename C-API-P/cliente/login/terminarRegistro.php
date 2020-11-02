@@ -1,14 +1,14 @@
 <?php
-    require("../headers.php");
-    require("../conexion.php");
+    require("../../headers.php");
+    require("../../conexion.php");
     $conexion = conexion();
 
     $id = mysqli_real_escape_string($conexion,$_POST['id_usuario']);
     $celular =  mysqli_real_escape_string($conexion,$_POST['celular']);
-    $celularext =  mysqli_real_escape_string($conexion,$_POST['celular_ext']);
-    $nacimiento =  mysqli_real_escape_string($conexion,$_POST['fecha_nacimiento']);
+    $celularext =  mysqli_real_escape_string($conexion,$_POST['celularExt']);
+    $nacimiento =  mysqli_real_escape_string($conexion,$_POST['nacimiento']);
 
-    $consulta = "UPDATE usuario SET celular = '$celular', celular_ext = '$celularext', fecha_nacimiento = '$nacimiento', tipo_usuario = '1' WHERE id_facebook = '$id'";
+    $consulta = "UPDATE usuario SET celular = '$celular', celular_ext = '$celularext', fecha_nacimiento = '$nacimiento', estado = '1' WHERE id_usuario = '$id'";
     //EJECUTA LA SENTENCIA SQL
     mysqli_query($conexion,$consulta) or die (mysqli_error($conexion));;
 
