@@ -3,7 +3,7 @@
     require("../../conexion.php");
     require("../../BD.php");
     require("../../modelo/ClaseChat.php");
-    require("../../modelo/Usuario.php");
+    require("../../modelo/ClaseUsuario.php");
 
     $conexion = conexion();
     $id_chat = $_GET['id_chat'];
