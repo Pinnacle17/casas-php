@@ -5,7 +5,12 @@
     require("../../../modelo/ClaseChat.php");
 
     $id_chat = $_GET['id_chat'];
-    Chat::UpdateEstadoNotificacion($id_chat, 4);
+    $consulta_estado_chat = "SELECT id_chat FROM chat WHERE notificacion = '3' AND id_chat = '$id_chat'";
+    $registro_chat = BD::consultaSelect($consulta_estado_chat);
+    if(mysqli_num_rows($registro_chat) > 0){
+        Chat::UpdateEstadoNotificacion($id_chat, 4);
+    }
+    
     class Result {}
 
     $response = new Result();
@@ -16,6 +21,6 @@
         $response->resultado = 'OK';
     }
     
-    echo json_encode($response); 
+    echo json_encode($response);  
 
 ?>

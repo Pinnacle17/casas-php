@@ -68,7 +68,7 @@ class Chat extends BD{
         }else{
             $mensajes = null;
         }
-        return $chat;
+        return $mensajes;
     }
     public static function Chats_estado($estado){
         $consulta_select_chat = "SELECT *FROM chat WHERE estado_chat = '$estado' AND (notificacion != '0' OR notificacion != '2')";
