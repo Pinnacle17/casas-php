@@ -2,7 +2,7 @@
     require("../../../headers.php");
     require("../../../conexion.php");
     require("../../../BD.php");
-    require("../../../modelo/ClaseUsuario.php");
+    require("../../../modelo/ClaseChat.php");
 
     $conexion = conexion();
     $id_usuario = $_GET['id_usuario'];

@@ -26,16 +26,5 @@
     Chat::UpdateEstadoChat($id_chat, 4);
     Chat::UpdateNotificacion($id_chat, 4);
     Usuario::EstadoUsuario($id_usuario, 3);
-    class Result {}
-
-    $response = new Result();
-    if(mysqli_error($conexion)){
-        $response->resultado = 'ERROR';
-    }
-    else{
-        $response->resultado = 'OK';
-    }
-    
-    echo json_encode($response); 
 
 ?>
