@@ -2,7 +2,7 @@
     require("../../headers.php");
     require("../../BD.php");
     require("../../modelo/ClaseChat.php");
-    require("../../modelo/ClaseUsario.php");
+    require("../../modelo/ClaseUsuario.php");
 
     $id_chat = $_GET['id_chat'];
     $chat = Chat::ChatId($id_chat);
