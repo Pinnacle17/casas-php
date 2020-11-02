@@ -6,12 +6,12 @@ class Chat extends BD{
         $fecha = date("Y-m-d H:i:s"); 
         $consulta_insert_mensaje = "INSERT INTO mensaje(mensaje, fecha, usuario, fk_chat) VALUES ($mensaje, $fecha, $usuario, $id_chat)";
         $resultado = BD::consultaSelect($consulta_insert_mensaje);
-        return $oferta;
+        return $resultado;
     }
     public static function UpdateEstadoChat($id_chat, $estado){ 
         $consulta_update_chat = "UPDATE chat SET estado_chat = '$estado' WHERE id_chat = '$id_chat'";
         $resultado = BD::consultaSelect($consulta_update_chat);
-        return $oferta;
+        return $resultado;
     }
     public static function Chat_estado($estado){
         $consulta_select_chat = "SELECT fk_usuario FROM chat WHERE estado_chat = '$estado'";
@@ -105,7 +105,7 @@ class Chat extends BD{
     public static function UpdateNotificacion($id_chat, $notificacion){ 
         $consulta_update_chat = "UPDATE chat SET notificacion = '$notificacion' WHERE id_chat = '$id_chat'";
         $resultado = BD::consultaSelect($consulta_update_chat);
-        return $oferta;
+        return $resultado;
     }
 
     public static function DatosPagoEstado($id_usuario, $pago){
