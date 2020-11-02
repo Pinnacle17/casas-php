@@ -2,8 +2,9 @@
     require("../../headers.php");
     require("../../BD.php");
     require("../../modelo/ClaseChat.php");
+    require("../../modelo/ClaseUsario.php");
 
-    $id_chat = $_POST['id_chat'];
+    $id_chat = $_GET['id_chat'];
     $chat = Chat::ChatId($id_chat);
     $id_oferta = $chat[0]['fk_oferta'];
     $id_usuario = $chat[0]['fk_usuario'];
