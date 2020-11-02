@@ -23,8 +23,8 @@
         $resultado['precio'] = $oferta[0]['precio'];
         $cuarto = Cuarto::DatosCuartoid($oferta[0]['fk_cuarto']);
         $resultado['nombre_cuarto'] = $cuarto['nombre_cuarto'];
-        $casa = Casa::DatosCasaid($cuarto[0]['fk_casa']);
-        $resultado['nombre_casa'] = $cuarto[0]['nombre_casa'];
+        $casa = Casa::DatosCasaid($cuarto['fk_casa']);
+        $resultado['nombre_casa'] = $cuarto['nombre_casa'];
         $semestre = Cuarto::DatosSemestreid($oferta[0]['fk_semestre']);
         $resultado['nombre_semestre'] = $semestre[0]['nombre'];
     }else{
