@@ -4,32 +4,35 @@
     require("../../../BD.php");
     require("../../../modelo/ClaseCuarto.php");
     $conexion = conexion();
-    $id_cuarto = mysqli_real_escape_string($conexion, $_POST['id_cuarto']);
-    $id_semestre = mysqli_real_escape_string($conexion, $_POST['id_semestre']);
-    class Result {}
-
-    $response = new Result();
+    $id_cuarto = mysqli_real_escape_string($conexion, $_GET['id_cuarto']);
+    $id_semestre = mysqli_real_escape_string($conexion, $_GET['id_semestre']);
+    $datos_compra_completos = [];
+    $oferta=[];
+    $compra=[];
+    $usuario=[];
     $oferta = Cuarto::VerOfertaCuarto($id_cuarto, $id_semestre);
+    
     if($oferta == null){
-        //no hay oferta, se muestra el mensaje de que no hay ofertas disponibles
+        $datos_compra_completos['tipo'] = 0;
     }else{
-        $compra = Cuarto::VerCompraCuarto($oferta['fk_oferta']);
+        $compra = Cuarto::VerCompraCuarto($oferta[0]['id_oferta']);
+        $datos_compra_completos['precio'] = $oferta[0]['precio'];
+        $datos_compra_completos['fk_oferta'] = $oferta[0]['id_oferta'];
         if($compra == null){
-            //hay oferta, pero no se ha vendido, por lo que se pude preguntar por esta, se manda la variable oferta para mostrar los datos ded esta
+            $datos_compra_completos['tipo'] = 1;
         }else{
-            $datos_compra_completos = Usuario::DatosUsuarioid($compra['fk_usuario']);
-            //solo foto y nombrede usuario se van a mostrar
-            //ademas de mostrar este mensaje, se mostrara el mensaje de que este usuario rento esta habitacion para el semestre seleccionado
+            $usuario = Usuario::DatosUsuarioid($compra['fk_usuario']);
+            if($compra['pago'] == 1){
+                $datos_compra_completos['pago'] = "Pagado";
+            }else{
+                $datos_compra_completos['pago'] = "No se ha confirmado el pago";
+            }
+            $datos_compra_completos['foto'] = $usuario['foto'];
+            $datos_compra_completos['nombre_usuario'] = $usuario['nombre_usuario'];
+            $datos_compra_completos['tipo'] = 2;
         }
     }
 
-  if(mysqli_error($conexion)){
-      $response->resultado = 'ERROR';
-  }
-  else{
-      $response->resultado = 'OK';
-  }
-
-  echo json_encode($response); 
+  echo json_encode($datos_compra_completos); 
 
 ?>
