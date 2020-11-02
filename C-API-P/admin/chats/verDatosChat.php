@@ -22,7 +22,7 @@
         $oferta = Usuario::verOfertaid($chat[0]['fk_oferta']);
         $resultado['precio'] = $oferta[0]['precio'];
         $cuarto = Cuarto::DatosCuartoid($oferta[0]['fk_cuarto']);
-        $resultado['nombre_cuarto'] = $cuarto[0]['nombre_cuarto'];
+        $resultado['nombre_cuarto'] = $cuarto['nombre_cuarto'];
         $casa = Casa::DatosCasaid($cuarto[0]['fk_casa']);
         $resultado['nombre_casa'] = $cuarto[0]['nombre_casa'];
         $semestre = Cuarto::DatosSemestreid($oferta[0]['fk_semestre']);
