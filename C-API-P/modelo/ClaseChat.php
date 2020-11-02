@@ -4,7 +4,7 @@ class Chat extends BD{
 
     public static function InsertarMensaje($id_chat, $mensaje, $usuario){
         $fecha = date("Y-m-d H:i:s"); 
-        $consulta_insert_mensaje = "INSERT INTO mensaje(mensaje, fecha, usuario, fk_chat) VALUES ($mensaje, $fecha, $usuario, $id_chat)";
+        $consulta_insert_mensaje = "INSERT INTO mensaje(mensaje, fecha, usuario, fk_chat) VALUES ('$mensaje', '$fecha', '$usuario', '$id_chat')";
         $resultado = BD::consultaSelect($consulta_insert_mensaje);
         return $resultado;
     }
