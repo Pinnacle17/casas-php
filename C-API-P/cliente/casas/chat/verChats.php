@@ -23,6 +23,6 @@
         $resultado = null;
     }
     
-    echo json_encode(null); 
+    echo json_encode($resultado); 
 
 ?>
