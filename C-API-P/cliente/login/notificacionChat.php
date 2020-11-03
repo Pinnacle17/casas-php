@@ -10,9 +10,9 @@
     $consulta_registro = "SELECT *FROM chat WHERE fk_usuario = '$id_usuario' AND (notificacion = '1' OR notificacion = '3')";
     $resultado = BD::consultaSelect($consulta_registro);
     if(mysqli_num_rows($resultado) >= 1){
-        while ($resultado = mysqli_fetch_array($resultado)){
-            $chat = $resultado['id_chat'];
-            $notificacion = $resultado['notificacion'];
+        while ($while = mysqli_fetch_array($resultado)){
+            $chat = $while['id_chat'];
+            $notificacion = $while['notificacion'];
         }
         if($notificacion == 3){
             Chat::UpdateNotificacion($chat, 4);
