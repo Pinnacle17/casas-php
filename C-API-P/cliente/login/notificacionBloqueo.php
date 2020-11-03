@@ -8,7 +8,7 @@
     $id_usuario = mysqli_real_escape_string($conexion,$_GET['id']);//id de facebook
 
     $consulta_chat = "SELECT *FROM chat WHERE fk_usuario = '$id_usuario' AND estado_chat = '4'";
-    $resultado = BD::consultaSelect($consulta_registro);
+    $resultado = BD::consultaSelect($consulta_chat);
     while ($while = mysqli_fetch_array($resultado)){
         $chat = $while['id_chat'];
     }
