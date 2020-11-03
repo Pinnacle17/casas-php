@@ -31,13 +31,13 @@
         $id_pub = $resultado["id_publicacion"];
     }
 
-    $carpeta_publicacion = "../../../admin/assets/img/publicaciones/".$id_pub;
+    $carpeta_publicacion = "../assets/img/publicaciones/".$id_pub;
     mkdir($carpeta_publicacion, 0777, true);
 
-    $carpeta_ipublicacion = "../../../admin/assets/img/publicaciones/".$id_pub."/"."principal";
+    $carpeta_ipublicacion = "../assets/img/publicaciones/".$id_pub."/"."principal";
     mkdir($carpeta_ipublicacion, 0777, true);
 
-    $carpeta_imgs = "../../../admin/assets/img/publicaciones/".$id_pub."/"."imgs";
+    $carpeta_imgs = "../assets/img/publicaciones/".$id_pub."/"."imgs";
     mkdir($carpeta_imgs, 0777, true);
 
     $dirpub = $carpeta_ipublicacion."/".$ipublicacion;
