@@ -17,8 +17,7 @@
         $response->id_usuario = $usuario['id_admin'];
         $response->estado = 1;
     }
-    else{
-        if($usuario['estado'] == -2){
+    else{if($usuario['estado'] == -2){
             $response->mensaje = "El usuario que ingreso no se encuentra activo.";
             $response->estado = 0;
         }else if($usuario['estado'] == -1){     

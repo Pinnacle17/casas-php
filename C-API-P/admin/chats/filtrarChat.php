@@ -1,22 +1,22 @@
 <?php
     require("../../headers.php");
+    require("../../conexion.php");
     require("../../BD.php");
     require("../../modelo/ClaseChat.php");
     require("../../modelo/ClaseUsuario.php");
-    require("../../modelo/ClaseCasa.php");
-    require("../../modelo/ClaseCuarto.php");
-    $chat = Chat::Chats_notificacion();
+    
+    $conexion = conexion();
+    $estado = $_POST['estado'];
+    $chat = Chat::Chats_estado($estado);
     if($chat != null){
         $num_chat = count($chat);
         for($x = 0; $x<$num_chat; $x++){
             if($chat[$x]['notificacion'] == 0){
-                $resultado[$x]['notificacion'] = "Sin respuesta";
-            }else if($chat[$x]['notificacion'] == 2){
-                $resultado[$x]['notificacion'] = "Terminado por el usuario";
+                $resultado[$x]['notificacion'] = "Encontrado";
             }
             $usuario = Usuario::DatosUsuarioid($chat[$x]['fk_usuario']);
-            $resultado[$x]['nombre_usuario'] = $usuario[0]['nombre_usuario'];
             $resultado[$x]['foto'] = $usuario[0]['foto'];
+            $resultado[$x]['nombre_usuario'] = $usuario[0]['nombre_usuario'];
             $resultado[$x]['id_chat'] = $chat[$x]['id_chat'];
             $resultado[$x]['fk_oferta'] = $chat[$x]['fk_oferta'];
             // $oferta = Usuario::verOfertaid($chat[$x]['fk_oferta']);

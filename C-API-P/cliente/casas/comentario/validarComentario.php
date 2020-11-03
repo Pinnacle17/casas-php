@@ -22,7 +22,7 @@
             for($x = 0; $x < $numeroventas; $x++){
                 $oferta = Usuario::verOfertaid($ventas[$x]['fk_oferta']);
                 for($y = 0; $y < $z; $y++){
-                    if($oferta['fk_cuarto'] == $id_cuartos[$y]['id_cuarto']){
+                    if($oferta[0]['fk_cuarto'] == $id_cuartos[$y]['id_cuarto']){
                         $encontrado = 1;//significa que rento un cuarto y puede comentar la casa
                         break;
                     }

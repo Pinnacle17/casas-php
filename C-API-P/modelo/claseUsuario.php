@@ -13,41 +13,32 @@ class Usuario extends BD{
         }
         return $usuario;
     }
-
-    public static function Iniciodesesionadmin($correoI, $contra){
-        $response = array();
-        $consulta = "SELECT * FROM admin";
+        public static function Iniciodesesionadmin($correo, $contraseña){
+        $response = [];
+        $consulta = "SELECT *FROM admin WHERE correo = '$correo'";
         $resultado = BD::consultaSelect($consulta);
         if(mysqli_num_rows($resultado) > 0){
             while ($while = mysqli_fetch_array($resultado)){
                 $id_usuario = $while['id_admin'];
-                $correo = $while['correo'];
-                $contrasena = $while['contrasena'];
+                $contra = $while['contrasena'];
                 $activo = $while['activo'];
             }
-            $correo = str_replace("\r\n", '' , $correo);
-
             if($activo == 0){
                 $response['estado'] = -2;//significa que la cuenta ya no esta activa
                 return $response; 
+            }else if(password_verify($contraseña, $contra)){
+                $response['id_admin'] = $id_usuario;
+                $response['estado'] = 1;
+                return $response;
+            }else{
+                $response['estado'] = 0;//contraseña incorrecta
+                return $response;                
             }
-
-            if($correoI != $correo){
-                $response['estado'] = -1;//no se encontro el correo
-                return $response; 
-            }
-            else{
-                if(password_verify($contra, $contrasena)){
-                    $response['estado'] = 1;
-                    $response['id_admin'] = $id_usuario;
-                    return $response;
-                }else{
-                    $response['estado'] = 0;//contraseña incorrecta
-                    return $response;                
-                }
-            }
-            return $correo;
+        }else{
+            $response['estado'] = -1;//no se encontro el correo
+        
         }
+        return $response;  
     }
     
     public static function verVentasUsuario($id_usuario){

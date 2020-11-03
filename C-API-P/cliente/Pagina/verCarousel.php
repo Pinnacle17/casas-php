@@ -4,7 +4,7 @@
 
     $conexion = conexion();
 
-    $registros = mysqli_query($conexion, "SELECT * FROM casa ORDER BY orden_anuncio ASC");
+    $registros = mysqli_query($conexion, "SELECT * FROM casa WHERE estado_casa = '1' ORDER BY orden_anuncio ASC");
 
     $carousel = [];
 

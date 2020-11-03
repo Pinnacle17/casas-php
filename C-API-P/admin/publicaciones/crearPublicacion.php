@@ -6,6 +6,7 @@
     $fecha = date('Y-m-d H:i:s');
     $titulo = $_POST["titulo"];
     $articulo = $_POST["articulo"];
+    $titulo_busqueda = strtolower($titulo);
 
     $numimg = count($_FILES['imgsPublicacion']["name"]);
     $imgs = $_FILES['imgsPublicacion'];
@@ -14,10 +15,12 @@
 
     $consulta_insert_publicacion = "INSERT INTO publicacion(
     titulo_pub,
+    titulo_pub_busqueda,
     articulo_pub,
     creacion_pub,
     visitas_publicacion) VALUES(
-    '$titulo',  
+    '$titulo',
+    '$titulo_busqueda',  
     '$articulo', 
     '$fecha',
     '0')";
