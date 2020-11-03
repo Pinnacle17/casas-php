@@ -7,7 +7,7 @@
     //CACHA TODO TODOS LOS DATOS QUE FUERON ENVIADOS DESDE UNA PETICION HTTP
     $id_usuario = mysqli_real_escape_string($conexion,$_GET['id']);//id de facebook
 
-    $consulta_chat = "SELECT *FROM chat WHERE fk_usuario = '$id_usuario' AND estado_chat = '3'";
+    $consulta_chat = "SELECT *FROM chat WHERE fk_usuario = '$id_usuario' AND estado_chat = '4'";
     $resultado = BD::consultaSelect($consulta_registro);
     while ($while = mysqli_fetch_array($resultado)){
         $chat = $while['id_chat'];
