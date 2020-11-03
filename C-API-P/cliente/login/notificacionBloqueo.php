@@ -14,7 +14,7 @@
     }
     $consulta_mensaje = "SELECT *FROM mensaje WHERE fk_chat = '$chat' ORDER BY id_mensaje DESC LIMIT 1";
     $resultado2 = BD::consultaSelect($consulta_mensaje);
-    while ($while2 = mysqli_fetch_array($resultado)){
+    while ($while2 = mysqli_fetch_array($resultado2)){
         $mensaje = $while2['mensaje'];
     }
     class Result {}
