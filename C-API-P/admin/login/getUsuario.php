@@ -4,9 +4,9 @@
 
     $conexion = conexion();
 
-    $id_fb = mysqli_real_escape_string($conexion,$_GET['id_fb']);
-
-    $registros = mysqli_query($conexion, "SELECT * FROM usuario WHERE estado != 2 AND id_facebook = '$id_fb'");
+    $id = mysqli_real_escape_string($conexion,$_GET['id_usuario']);
+    
+    $registros = mysqli_query($conexion, "SELECT * FROM usuario WHERE id_usuario = '$id'");
     
     $usuario = []; 
     while ($resultado = mysqli_fetch_array($registros)){
