@@ -26,7 +26,7 @@
     }
 
     if($id != null){
-        $consulta = "UPDATE casa SET orden_casa = '$orden' WHERE id_casa = '$id'";
+        $consulta = "UPDATE casa SET orden_anuncio = '$orden' WHERE id_casa = '$id'";
         $registro = mysqli_query($conexion,$consulta) or die(mysqli_error($conexion));
     }
 

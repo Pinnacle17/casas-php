@@ -23,11 +23,19 @@
 
     $response = new Result();
 
+    $consulta_select_id = "SELECT id_oferta FROM oferta ORDER BY id_oferta DESC LIMIT 1";
+
+    $registros = mysqli_query($conexion, $consulta_select_id) or die (mysqli_error($conexion));
+
+    while ($resultado = mysqli_fetch_array($registros)){
+      $id_oferta = $resultado["id_oferta"];
+    }
     if(mysqli_error($conexion)){
         $response->resultado = 'ERROR';
     }
     else{
         $response->resultado = 'OK';
+        $response->oferta = $id_oferta;
     }
 
     echo json_encode($response); 
