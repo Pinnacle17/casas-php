@@ -9,7 +9,7 @@
         $numimg = count($_FILES['imgsPublicacion']["name"]);
         $imgs = $_FILES['imgsPublicacion'];
 
-        $carpeta_imgs = "../../../admin/assets/img/publicaciones/".$id_publicacion."/"."imgs/";
+        $carpeta_imgs = "../assets/img/publicaciones/".$id_publicacion."/"."imgs/";
 
         for($x=0; $x<$numimg; $x++){
             $nombre_img = $imgs["name"][$x];
@@ -37,7 +37,7 @@
             $publicacion_img = $resultado["publi_img"];
         }
         
-        $carpeta_publicacion = "../../../admin/assets/img/publicaciones/";
+        $carpeta_publicacion = "../assets/img/publicaciones/";
         $dirpublicacion = $id_publicacion."/principal"."/".$ipublicacion; //Checar ruta
 
         $ruta_img = $carpeta_publicacion.$publicacion_img; //poner la ruta para llegar a la imagen
