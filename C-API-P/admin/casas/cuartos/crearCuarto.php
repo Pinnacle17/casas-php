@@ -35,7 +35,7 @@
       $id_cuarto = $resultado["id_cuarto"];
   }
 
-  $carpeta_cuarto = "../../admin/assets/img/casas/".$id_casa."/".$id_cuarto;
+  $carpeta_cuarto = "../../assets/img/casas/".$id_casa."/".$id_cuarto;
   mkdir($carpeta_cuarto, 0777, true);
 
   $carpeta_iprincipal = $carpeta_cuarto."/principal";
