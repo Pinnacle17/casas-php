@@ -21,7 +21,7 @@
     }else{
         $promocion = null;
     }
-        
-  echo json_encode($promocion); 
+
+    echo json_encode($promocion); 
 
 ?>
