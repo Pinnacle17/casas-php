@@ -8,23 +8,12 @@
     $id_chat = $_GET['id_chat'];
     $chat = Chat::ChatId($id_chat);
     if($chat != null){
-        if($chat[0]['estado_chat'] == 1){
-            $resultado['estado_chat'] = "Activo";
-        }else if($chat[0]['estado_chat'] == 2){
-            $resultado['estado_chat'] = "Terminado por el usuario";
-        }else if($chat[0]['estado_chat'] == 3){
-            $resultado['estado_chat'] = "Terminado por el administrador";
-        }else{
-            $resultado['estado_chat'] = "Terminado";
-        }
         $oferta = Usuario::verOfertaid($chat[0]['fk_oferta']);
         $resultado['precio'] = $oferta[0]['precio'];
         $cuarto = Cuarto::DatosCuartoid($oferta[0]['fk_cuarto']);
         $resultado['nombre_cuarto'] = $cuarto['nombre_cuarto'];
         $casa = Casa::DatosCasaid($cuarto['fk_casa']);
         $resultado['nombre_casa'] = $casa[0]['nombre_casa'];
-        $semestre = Cuarto::DatosSemestreid($oferta[0]['fk_semestre']);
-        $resultado['nombre_semestre'] = $semestre[0]['nombre'];
     }else{
         $resultado = null;
     }

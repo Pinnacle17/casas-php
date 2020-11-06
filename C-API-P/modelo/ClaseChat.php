@@ -37,8 +37,7 @@ class Chat extends BD{
                 $chats[$x]['creacion_chat'] = $while['creacion_chat'];
                 $chats[$x]['notificacion'] = $while['notificacion'];
                 $chats[$x]['id_chat'] = $while['id_chat'];
-                $chats[$x]['fk_oferta'] = $while['fk_oferta'];
-                $chats[$x]['id_chat'] = $while['id_chat'];
+                //$chats[$x]['fk_oferta'] = $while['fk_oferta'];
                 $x++;
             }
         }else{
@@ -77,7 +76,7 @@ class Chat extends BD{
             $x = 0;
             while ($while = mysqli_fetch_array($resultado)){
                 $chats[$x]['fk_usuario'] = $while['fk_usuario'];
-                $chats[$x]['fk_oferta'] = $while['fk_oferta'];
+                //$chats[$x]['fk_oferta'] = $while['fk_oferta'];
                 $chats[$x]['id_chat'] = $while['id_chat'];
                 $chats[$x]['estado_chat'] = $while['estado_chat'];
                 $chats[$x]['notificacion'] = $while['fk_usuario'];
@@ -116,7 +115,7 @@ class Chat extends BD{
             while ($while = mysqli_fetch_array($resultado)){
                 $pagos[$x]['id_compra'] = $while['id_compra'];
                 $pagos[$x]['fecha_compra'] = $while['fecha_compra'];
-                $pagos[$x]['fk_oferta'] = $while['fk_oferta'];
+                //$pagos[$x]['fk_oferta'] = $while['fk_oferta'];
                 $x++;
             }
         }else{

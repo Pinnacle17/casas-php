@@ -18,7 +18,7 @@
             $resultado[$x]['foto'] = $usuario[0]['foto'];
             $resultado[$x]['nombre_usuario'] = $usuario[0]['nombre_usuario'];
             $resultado[$x]['id_chat'] = $chat[$x]['id_chat'];
-            $resultado[$x]['fk_oferta'] = $chat[$x]['fk_oferta'];
+            //$resultado[$x]['fk_oferta'] = $chat[$x]['fk_oferta'];
             // $oferta = Usuario::verOfertaid($chat[$x]['fk_oferta']);
             // $cuarto = Cuarto::DatosCuartoid($oferta[0]['fk_cuarto']);
             // $resultado[$x]['nombre_cuarto'] = $cuarto[0]['nombre_cuarto'];
