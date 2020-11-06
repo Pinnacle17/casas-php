@@ -3,7 +3,6 @@
     require("../../../conexion.php");
     require("../../../BD.php");
     require("../../../modelo/claseUsuario.php");
-    require("../../../modelo/clase.php");
 
     $conexion = conexion();
 

@@ -43,7 +43,7 @@ class Usuario extends BD{
     
     public static function verVentasUsuario($id_usuario){
         $consulta_select_compra = "SELECT *FROM compra WHERE fk_usuario = '$id_usuario'";
-        $resultado = BD::consultaSelect($consulta_select_chat);
+        $resultado = BD::consultaSelect($consulta_select_compra);
         if(mysqli_num_rows($resultado) > 0){
             $x = 0;
             while ($while = mysqli_fetch_array($resultado)){

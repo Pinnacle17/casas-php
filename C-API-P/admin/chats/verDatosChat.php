@@ -19,7 +19,6 @@
         }else{
             $resultado['estado_chat'] = "Terminado";
         }
-        $$resultado['id_usuario'] = $chat[0]['fk_usuario'];
         $usuario = Usuario::DatosUsuarioid($chat[0]['fk_usuario']);
         $resultado['nombre_usuario'] = $usuario[0]['nombre_usuario'];
         $oferta = Usuario::verOfertaid($chat[0]['fk_oferta']);

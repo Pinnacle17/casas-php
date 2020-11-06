@@ -1,7 +1,7 @@
 <?php
-    require("../../headers.php");
-    require("../../BD.php");
-    require("../../conexion.php");
+    require("../../../headers.php");
+    require("../../../BD.php");
+    require("../../../conexion.php");
 
     $conexion = conexion();
     
@@ -9,7 +9,7 @@
     $id_casa = $_GET['id_casa'];
 
     $comentario = mysqli_real_escape_string($conexion, $_GET['comentario']);
-    $cal_instalaciones = mysqli_real_escape_string($conexion, $_GET['instalaciones']);
+    $cal_instalaciones = mysqli_real_escape_string($conexion, $_GET['instalacion']);
     $cal_limpieza = mysqli_real_escape_string($conexion, $_GET['limpieza']);
     $cal_ambiente = mysqli_real_escape_string($conexion, $_GET['ambiente']);
     if(($cal_instalaciones < 5) || ($cal_limpieza < 5) || ($cal_ambiente < 5)){

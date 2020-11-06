@@ -1,7 +1,7 @@
 <?php
     require("../../../headers.php");
     require("../../../conexion.php");
-    require("../../../modelo/BD.php");
+    require("../../../BD.php");
     require("../../../modelo/ClaseUsuario.php");
 
     $conexion = conexion();
@@ -11,7 +11,7 @@
     $resultado_cuartos = BD::consultaSelect($consulta_select_cuartos);
     $ventas = Usuario::verVentasUsuario($id_usuario);
     $encontrado = 0;
-    if(mysqli_num_rows($resultado_cuartos > 0)){
+    if(mysqli_num_rows($resultado_cuartos) > 0){
         if($ventas != null){
             $z = 0;
             while ($cuartos = mysqli_fetch_array($resultado_cuartos)){
