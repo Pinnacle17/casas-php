@@ -5,6 +5,7 @@
     require("../../modelo/ClaseChat.php");
     require("../../modelo/ClaseUsuario.php");
     require("../../modelo/ClaseCuarto.php");
+    require("../../conexion.php");
     $id_usuario = $_GET['id_usuario'];
     $token = $_GET['token'];
     $pago = Chat::DatosPagoEstado($id_usuario, 0);
