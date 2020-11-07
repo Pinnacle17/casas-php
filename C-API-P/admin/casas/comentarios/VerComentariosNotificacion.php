@@ -17,7 +17,7 @@
             $resultado[$x]['fk_usuario'] = $comentarios[$x]['fk_usuario'];
             $usuario = DatosUsuarioid($resultado[$x]['fk_usuario']);
             $resultado[$x]['nombre_usuario'] = $usuario['nombre_usuario'];
-
+            $resultado[$x]['foto'] = $usuario[0]['foto'];
         }
     }else{
         $resultado = null;//no se encontro nada

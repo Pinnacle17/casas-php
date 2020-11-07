@@ -18,8 +18,8 @@ if(mysqli_num_rows($registros) > 0){
         $comentarios[$x]['comentario'] = $resultado['comentario'];
         $comentarios[$x]['fk_usuario'] = $resultado['fk_usuario'];
         $usuario = Usuario::DatosUsuarioid($resultado['fk_usuario']);
-        $comentarios[$x]['nombre_usuario'] = $usuario['nombre_usuario'];
-        $comentarios[$x]['foto'] = $usuario['foto'];
+        $comentarios[$x]['nombre_usuario'] = $usuario[0]['nombre_usuario'];
+        $comentarios[$x]['foto'] = $usuario[0]['foto'];
     }
 }else{
     $comentarios = null;
