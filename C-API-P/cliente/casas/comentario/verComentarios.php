@@ -1,6 +1,7 @@
 <?php
 require("../../../headers.php");
 require("../../../conexion.php");
+require("../../../BD.php");
 require("../../../modelo/claseUsuario.php");
 
 $conexion = conexion();
