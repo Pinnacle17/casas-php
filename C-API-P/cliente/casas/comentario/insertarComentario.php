@@ -12,7 +12,7 @@
     $cal_instalaciones = mysqli_real_escape_string($conexion, $_GET['instalacion']);
     $cal_limpieza = mysqli_real_escape_string($conexion, $_GET['limpieza']);
     $cal_ambiente = mysqli_real_escape_string($conexion, $_GET['ambiente']);
-    if(($cal_instalaciones < 5) || ($cal_limpieza < 5) || ($cal_ambiente < 5)){
+    if(($cal_instalaciones <= 6) || ($cal_limpieza <= 6) || ($cal_ambiente <= 6)){
         $estado = 2;
     }else{
         $estado = 1;

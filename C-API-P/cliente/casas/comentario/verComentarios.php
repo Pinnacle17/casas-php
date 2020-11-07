@@ -12,6 +12,7 @@ if(mysqli_num_rows($registros) > 0){
     $comentarios = [];
     $x = 0;
     while ($resultado = mysqli_fetch_array($registros)){
+        $comentarios[$x]['id_calificacion'] = $resultado['id_calificacion'];
         $comentarios[$x]['limpieza'] = $resultado['limpieza'];
         $comentarios[$x]['ambiente'] = $resultado['ambiente'];
         $comentarios[$x]['instalaciones'] = $resultado['instalaciones'];
