@@ -16,7 +16,7 @@
             $resultado[$x]['comentario'] = $comentarios[$x]['comentario'];
             $resultado[$x]['fk_usuario'] = $comentarios[$x]['fk_usuario'];
             $usuario = Usuario::DatosUsuarioid($resultado[$x]['fk_usuario']);
-            $resultado[$x]['nombre_usuario'] = $usuario['nombre_usuario'];
+            $resultado[$x]['nombre_usuario'] = $usuario[0]['nombre_usuario'];
             $resultado[$x]['foto'] = $usuario[0]['foto'];
         }
     }else{
