@@ -1,6 +1,7 @@
 <?php
     require("../../../headers.php");
     require("../../../conexion.php");
+    $conexion = conexion();
     $id_oferta = $_POST['id_oferta'];
     $grupo = $_POST['grupo'];
     $precio = $_POST['precio'];

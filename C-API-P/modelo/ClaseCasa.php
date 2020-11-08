@@ -24,7 +24,7 @@ class Casa extends BD{
         return $comentarios;
     }         
     public static function DatosCasaid($id_casa){
-        $consulta_select_casa = "SELECT nombre_casa FROM casa WHERE id_casa = '$id_casa'";
+        $consulta_select_casa = "SELECT nombre_casa, dias_rentas, cantidad_rentas, fk_colonia FROM casa WHERE id_casa = '$id_casa'";
         $resultado = BD::consultaSelect($consulta_select_casa);
         if(mysqli_num_rows($resultado) == 1){
             while ($while = mysqli_fetch_array($resultado)){
@@ -34,6 +34,18 @@ class Casa extends BD{
             $casa = null;
         }
         return $casa;
+    }
+    public static function DatosColoniaid($id_colonia){
+        $consulta_select_casa = "SELECT *FROM colonia WHERE id_colonia = '$id_colonia'";
+        $resultado = BD::consultaSelect($consulta_select_casa);
+        if(mysqli_num_rows($resultado) == 1){
+            while ($while = mysqli_fetch_array($resultado)){
+                $colonia[] = $while;
+            }
+        }else{
+            $colonia = null;
+        }
+        return $colonia;
     }
     
 }

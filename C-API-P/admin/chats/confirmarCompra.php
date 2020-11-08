@@ -6,9 +6,7 @@
     $id_oferta = $_GET['id_oferta'];
     $id_usuario = $_GET['id_usuario'];
     $fecha = date("Y-m-d H:i:s"); 
-    $usuario = Usuario::DatosUsuarioid($id_usuario);
-    $nacionalidad = $usuario['nacionalidad'];
-    $consulta_insert_compra = "INSERT INTO compra(pago, fecha_compra, nacionalidad, fk_oferta, fk_usuario) VALUES ('0', '$fecha', '$nacionalidad','$id_oferta', '$id_usuario')";
+    $consulta_insert_compra = "INSERT INTO compra(pago, fecha_compra, fk_oferta, fk_usuario) VALUES ('0', '$fecha','$id_oferta', '$id_usuario')";
     BD::consultaSelect($consulta_insert_compra);
     Chat::UpdateNotificacion($id_chat, 4);
     Usuario::modificarEstadoOferta($id_oferta, 0);
