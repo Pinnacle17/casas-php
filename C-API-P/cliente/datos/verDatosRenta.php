@@ -29,8 +29,6 @@
             $resultado[$x]['nombre_cuarto'] = $cuarto['nombre_cuarto'];
             $casa = Casa::DatosCasaid($cuarto['fk_casa']);
             $resultado[$x]['nombre_casa'] = $casa[0]['nombre_casa'];
-            $cuarto = Casa::DatosCasaid($cuarto['']);
-            $resultado[$x]['nombre_casa'] = $cuarto[0]['nombre_casa'];
         }
         echo json_encode($resultado);
     }else{
