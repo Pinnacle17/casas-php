@@ -7,7 +7,7 @@
 
     $id_usuario = $_GET['id_usuario'];
 
-    $rentas = Usuario::verRentasUsuario($id_usuario);
+    $rentas = Usuario::verVentasUsuario($id_usuario);
     if($rentas != null){
 
         $numerorentas = count($rentas);
