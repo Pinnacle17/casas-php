@@ -1,7 +1,7 @@
 <?php
-    require("../../../headers.php");
-    require("../../../BD.php");
-    require("../../../modelo/ClaseChat.php");
+    require("../../headers.php");
+    require("../../BD.php");
+    require("../../modelo/ClaseChat.php");
     $inicio = $_POST['inicio'];
     $fin = $_POST['fin'];
     $nombre = $_POST['nombre'];
