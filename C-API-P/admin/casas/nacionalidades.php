@@ -1,7 +1,7 @@
 <?php
     require("../../headers.php");
     require("../../BD.php");
-    $consulta = "SELECT usuario.nacionalidad, COUNT(usuario.nacionalidad) AS numero FROM compra JOIN usuario ON compra.fk_usuario=usuario.id_usuario GROUP BY usuario.nacionalidad";
+    $consulta = "SELECT usuario.nacionalidad, COUNT(usuario.nacionalidad) AS numero FROM compra JOIN usuario ON compra.fk_usuario=usuario.id_usuario GROUP BY usuario.nacionalidad ORDER BY numero";
     $resultado = BD::consultaSelect($consulta);
     if(mysqli_num_rows($resultado) > 0){
         while ($row = mysqli_fetch_row($resultado)) {

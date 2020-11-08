@@ -14,6 +14,7 @@
             }
             $resultado[$x]["id_casa"] = $casa["id_casa"];
             $resultado[$x]["nombre_casa"] = $casa["nombre_casa"];
+            $resultado[$x]["orden_anuncio"] = $casa["orden_anuncio"];
             $x++;
         }
     }else{
