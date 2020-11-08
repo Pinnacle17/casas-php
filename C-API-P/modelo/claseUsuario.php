@@ -2,7 +2,7 @@
 
 class Usuario extends BD{
     public static function DatosUsuarioid($id_usuario){
-        $consulta_select_usuario = "SELECT foto, nombre_usuario, celular, celular_ext FROM usuario WHERE id_usuario = '$id_usuario'";
+        $consulta_select_usuario = "SELECT foto, nombre_usuario, celular, celular_ext, nacionalidad FROM usuario WHERE id_usuario = '$id_usuario'";
         $resultado = BD::consultaSelect($consulta_select_usuario);
         if(mysqli_num_rows($resultado) == 1){
             while ($while = mysqli_fetch_array($resultado)){
@@ -73,6 +73,10 @@ class Usuario extends BD{
     }
     public static function EstadoUsuario($id_usuario, $estado){
         $consulta_update_usuario = "UPDATE usuario SET estado = '$estado' WHERE id_usuario = '$id_usuario'";
+        BD::consultaSelect($consulta_update_usuario);
+    }
+    public static function modificarEstadoOferta($id_oferta, $estado){
+        $consulta_update_usuario = "UPDATE oferta SET estado = '$estado' WHERE id_oferta = '$id_oferta'";
         BD::consultaSelect($consulta_update_usuario);
     }
         
