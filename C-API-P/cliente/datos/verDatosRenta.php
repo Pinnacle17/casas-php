@@ -21,12 +21,16 @@
                 $resultado[$x]['pago'] = "Pendiente de pago";
             }
             $oferta = Usuario::verOfertaid($rentas[$x]['fk_oferta']);
-            $resultado[$x]['precio'] = $oferta[$x]['precio'];
-            $resultado[$x]['grupo'] = $oferta[$x]['grupo'];
-            $cuarto = Cuarto::DatosCuartoid($oferta[$x]['fk_cuarto']);
+            $resultado[$x]['precio'] = $oferta[0]['precio'];
+            $resultado[$x]['grupo'] = $oferta[0]['grupo'];
+            $semestre = Cuarto::DatosSemestreid($oferta[0]['fk_semestre']);
+            $resultado[$x]['semestre'] = $semestre[0]['nombre'];
+            $cuarto = Cuarto::DatosCuartoid($oferta[0]['fk_cuarto']);
             $resultado[$x]['nombre_cuarto'] = $cuarto['nombre_cuarto'];
             $casa = Casa::DatosCasaid($cuarto['fk_casa']);
-            $resultado[$x]['nombre_casa'] = $casa['nombre_casa'];
+            $resultado[$x]['nombre_casa'] = $casa[0]['nombre_casa'];
+            $cuarto = Casa::DatosCasaid($cuarto['']);
+            $resultado[$x]['nombre_casa'] = $cuarto[0]['nombre_casa'];
         }
         echo json_encode($resultado);
     }else{
