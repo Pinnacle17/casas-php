@@ -115,7 +115,7 @@ class Chat extends BD{
             while ($while = mysqli_fetch_array($resultado)){
                 $pagos[$x]['id_compra'] = $while['id_compra'];
                 $pagos[$x]['fecha_compra'] = $while['fecha_compra'];
-                //$pagos[$x]['fk_oferta'] = $while['fk_oferta'];
+                $pagos[$x]['fk_oferta'] = $while['fk_oferta'];
                 $x++;
             }
         }else{
