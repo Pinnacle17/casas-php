@@ -7,6 +7,6 @@
     $nombre = $_POST['nombre'];
     $consulta = "INSERT INTO semestre(nombre, inicio_semestre, fin_semestre) VALUES ('$nombre','$inicio','$fin')";
     $resultado = BD::consultaSelect($consulta);
-    echo json_encode($mensajes); 
+    echo json_encode(true); 
 
 ?>
