@@ -3,6 +3,7 @@
     require("../../../conexion.php");
     require("../../../BD.php");
     require("../../../modelo/ClaseCuarto.php");
+    require("../../../modelo/ClaseUsuario.php");
     $conexion = conexion();
     $id_cuarto = mysqli_real_escape_string($conexion, $_GET['id_cuarto']);
     $id_semestre = mysqli_real_escape_string($conexion, $_GET['id_semestre']);
