@@ -44,9 +44,9 @@
         $id_casa = $casa[0]['id_casa'];
         $colonia = Casa::DatosColoniaid($casa[0]['fk_colonia']);
         $id_colonia = $colonia[0]['id_colonia'];
-        $dias_renta_casa = $casa[0]['dias_rentas'] + $diferencia;
+        $dias_renta_casa = $casa[0]['dias_rentas'] + $diferencia->days;
         $cantidad_rentas_casa = $casa[0]['cantidad_rentas'] + 1;
-        $dias_renta_colonia = $colonia[0]['dias_rentas'] + $diferencia;
+        $dias_renta_colonia = $colonia[0]['dias_rentas'] + $diferencia->days;
         $cantidad_rentas_colonia = $colonia[0]['cantidad_rentas'] + 1;
         $consulta_update_colonia = "UPDATE colonia SET dias_rentas = '$dias_renta_colonia', cantidad_rentas = '$cantidad_rentas_colonia' WHERE id_colonia = '$id_colonia'";
         mysqli_query($conexion, $consulta_update_colonia );
