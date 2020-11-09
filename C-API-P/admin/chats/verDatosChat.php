@@ -21,14 +21,15 @@
         }
         $usuario = Usuario::DatosUsuarioid($chat[0]['fk_usuario']);
         $resultado['nombre_usuario'] = $usuario[0]['nombre_usuario'];
-        $oferta = Usuario::verOfertaid($chat[0]['fk_oferta']);
-        $resultado['precio'] = $oferta[0]['precio'];
-        $cuarto = Cuarto::DatosCuartoid($oferta[0]['fk_cuarto']);
-        $resultado['nombre_cuarto'] = $cuarto['nombre_cuarto'];
-        $casa = Casa::DatosCasaid($cuarto['fk_casa']);
-        $resultado['nombre_casa'] = $casa[0]['nombre_casa'];
-        $semestre = Cuarto::DatosSemestreid($oferta[0]['fk_semestre']);
-        $resultado['nombre_semestre'] = $semestre[0]['nombre'];
+        $resultado['id_usuario'] = $chat[0]['fk_usuario'];
+    //    $oferta = Usuario::verOfertaid($chat[0]['fk_oferta']);
+    //     $resultado['precio'] = $oferta[0]['precio'];
+    //     $cuarto = Cuarto::DatosCuartoid($oferta[0]['fk_cuarto']);
+    //     $resultado['nombre_cuarto'] = $cuarto['nombre_cuarto'];
+    //     $casa = Casa::DatosCasaid($cuarto['fk_casa']);
+    //     $resultado['nombre_casa'] = $casa[0]['nombre_casa'];
+    //     $semestre = Cuarto::DatosSemestreid($oferta[0]['fk_semestre']);
+    //     $resultado['nombre_semestre'] = $semestre[0]['nombre'];
     }else{
         $resultado = null;
     }
