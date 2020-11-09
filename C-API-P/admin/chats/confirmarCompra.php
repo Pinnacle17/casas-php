@@ -11,5 +11,5 @@
     //Chat::UpdateNotificacion($id_chat, 4);
     Usuario::modificarEstadoOferta($id_oferta, 0);
     Usuario::EstadoUsuario($id_usuario, 3);
-
+    echo json_encode(true);
 ?>
