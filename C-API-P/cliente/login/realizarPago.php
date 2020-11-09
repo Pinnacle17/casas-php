@@ -5,6 +5,7 @@
     require("../../modelo/ClaseChat.php");
     require("../../modelo/ClaseUsuario.php");
     require("../../modelo/ClaseCuarto.php");
+    require("../../modelo/ClaseCasa.php");
     require("../../conexion.php");
     $conexion = conexion();
     $id_usuario = $_GET['id_usuario'];
