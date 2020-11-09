@@ -8,16 +8,16 @@
         $x = 0;
         while ($colonia = mysqli_fetch_array($resultado)) {
             if($colonia['cantidad_rentas'] > 0){
-                $resultado[$x]["promedio"] = bcdiv($colonia["dias_rentas"], $colonia['cantidad_rentas'], 2);
+                $resultado1[$x]["promedio"] = bcdiv($colonia["dias_rentas"], $colonia['cantidad_rentas'], 2);
             }else{
-                $resultado[$x]["promedio"] = 0;
+                $resultado1[$x]["promedio"] = 0;
             }
-            $resultado[$x]["nombre_colonia"] = $colonia["nombre_colonia"];
+            $resultado1[$x]["nombre_colonia"] = $colonia["nombre_colonia"];
             $x++;
         }
 
     }else{
         $resultado = null;
     }
-    echo json_encode($resultado);   
+    echo json_encode($resultado1);   
 ?>
