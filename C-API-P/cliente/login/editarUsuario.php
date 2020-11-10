@@ -7,9 +7,8 @@
     $correo = mysqli_real_escape_string($conexion, $_POST['correo']);
     $celular = mysqli_real_escape_string($conexion, $_POST['celular']);
     $celular_ext = mysqli_real_escape_string($conexion, $_POST['celularExt']);
-    $nacionalidad = mysqli_real_escape_string($conexion, $_POST['nacionalidad']);
     
-    $consulta = "UPDATE usuario SET correo = '$correo', celular = '$celular', celular_ext = '$celular_ext', nacionalidad = '$nacionalidad' WHERE id_usuario = '$id_usuario'";
+    $consulta = "UPDATE usuario SET correo = '$correo', celular = '$celular', celular_ext = '$celular_ext' WHERE id_usuario = '$id_usuario'";
     $registro = mysqli_query($conexion,$consulta) or die(mysqli_error($conexion));
 
     class Result {}

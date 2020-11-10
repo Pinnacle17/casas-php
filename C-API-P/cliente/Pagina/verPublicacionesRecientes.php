@@ -4,15 +4,15 @@
 
     $conexion = conexion();
 
-    $registros = mysqli_query($conexion, "SELECT * FROM publicacion ORDER BY creacion_pub DESC");
+    $registros = mysqli_query($conexion, "SELECT *FROM publicacion ORDER BY creacion_pub DESC");
 
-    $eventos_recientes = [];
+    $publicaciones_recientes = [];
 
     while ($resultado = mysqli_fetch_array($registros)){
-        $eventos_recientes[] = $resultado;
+        $publicaciones_recientes[] = $resultado;
     }
 
-    $json = json_encode($eventos_recientes);
+    $json = json_encode($publicaciones_recientes);
 
     echo $json;
 

@@ -2,13 +2,13 @@
     require("../../headers.php");
     require("../../conexion.php"); 
     $conexion = conexion();
-    $id_casa = mysqli_real_escape_string($conexion, $_GET['id_casa']);
-    $consulta_select_imgs = "SELECT *FROM imagen_casa WHERE fk_casa = '$id_casa'";
+    $id_publicacion = mysqli_real_escape_string($conexion, $_GET['id_publicacion']);
+    $consulta_select_imgs = "SELECT *FROM imagen_pub WHERE fk_publicacion = '$id_publicacion'";
     $resultado = mysqli_query($conexion, $consulta_select_imgs) or die(mysqli_error($conexion));
     $numimagenes = mysqli_num_rows($resultado);
     $total = $numimagenes - 1;
-    if($total < 5){
-        $mensaje = "No se pueden eliminar la imagen, debe de haber minimo 5";
+    if($total < 1){
+        $mensaje = "No se pueden eliminar la imagen, debe de haber minimo 1";
     }else{
         $mensaje = true;   
     }
@@ -18,5 +18,4 @@
     $response->resultado = $mensaje;
   
     echo json_encode($response);
-    
 ?>
