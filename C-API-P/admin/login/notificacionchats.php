@@ -3,12 +3,11 @@ require("../../headers.php");
 require("../../conexion.php");
 require("../../BD.php");
 require("../../modelo/ClaseChat.php");
-require("../../modelo/ClaseUsuario.php");
 $conexion = conexion();
 
 class Result {}
 $response = new Result();
-    $usuario = Chat::Chat_estado(2);
+    $usuario = Chat::Chat_estado(0);
     if($usuario == null){
        $chats = 0;//no hay chats activos
     }else{

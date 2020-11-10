@@ -1,15 +1,14 @@
 <?php
-    require("../../headers.php");
-    require("../../conexion.php"); 
+    require("../../../headers.php");
+    require("../../../conexion.php"); 
     $conexion = conexion();
-    $id_casa = mysqli_real_escape_string($conexion, $_POST['id_casa']);
-    
+    $id_cuarto = mysqli_real_escape_string($conexion, $_POST['id_cuarto']);
     if(!empty($_FILES['imgs'])){
         $numimg = count($_FILES['imgs']["name"]);
-        $consulta_select_imgs = "SELECT *FROM imagen_casa WHERE fk_casa = '$id_casa'";
+        $consulta_select_imgs = "SELECT *FROM imagen_cuarto WHERE fk_cuarto = '$id_cuarto'";
         $resultado = mysqli_query($conexion, $consulta_select_imgs) or die(mysqli_error($conexion));
         $numimagenes = mysqli_num_rows($resultado);
-        $total = $numimagenes + $numimg - 30;
+        $total = $numimagenes + $numimg - 5;
         if($total > 0){
             $mensaje = "Se excede por ".$total." imagenes generales";
             echo json_encode($mensaje);
