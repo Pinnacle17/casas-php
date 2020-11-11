@@ -2,7 +2,7 @@
 require("../../../headers.php");
 require("../../../conexion.php");
 require("../../../BD.php");
-require("../../../modelo/claseUsuario.php");
+require("../../../modelo/ClaseUsuario.php");
 
 $conexion = conexion();
 $consulta = "SELECT *FROM calificacion WHERE estado = '1' AND fk_casa = $_GET[id_casa]";

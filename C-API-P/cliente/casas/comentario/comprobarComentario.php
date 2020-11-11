@@ -2,7 +2,7 @@
     require("../../../headers.php");
     require("../../../conexion.php");
     require("../../../BD.php");
-    require("../../../modelo/claseUsuario.php");
+    require("../../../modelo/ClaseUsuario.php");
 
     $conexion = conexion();
 
