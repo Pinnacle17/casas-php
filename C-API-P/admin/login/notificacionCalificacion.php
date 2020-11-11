@@ -11,7 +11,7 @@ $response = new Result();
     $resultado_notificaciones = BD::consultaSelect($consulta_notificaciones);
     if(mysqli_num_rows($resultado_notificaciones) > 0){
         $x = 0;
-        while ($while = mysqli_fetch_array($resultado)){
+        while ($while = mysqli_fetch_array($resultado_notificaciones)){
             $casas[$x]['fk_casa'] = $while['fk_casa'];
             $casa = Casa::DatosCasaid($while['fk_casa']);
             $casas[$x]['nombre_casa'] = $casa[0]['nombre_casa'];
