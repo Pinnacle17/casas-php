@@ -20,7 +20,7 @@
     $datos = "Cuarto: ".$cuarto['nombre_cuarto']." Semestre: ".$semestre[0]['nombre'];
     //$precio=1500
     $stripe = new \Stripe\StripeClient(
-        'sk_test_51HjyTwEaCyOGAt8v8MO2ggbyPhvJ2c74N43uMoKJYnCD0IFP7qpORr8U6gPeD5oEZeDK6LIOV0E0gfsZY6zGcmsI005Yr5UDv0'
+        'sk_test_51Hm9bxKNYck6nCphTxOvfcrvyc31caGuChYNbT7Y00VYW2cGbqaZYZ6K0GNgoxwjNSJemKKUe7T2SGnpjYY4WroD00s2u6r0f2'
       );
       $respuesta = $stripe->charges->create([
         'amount' => $precio,
