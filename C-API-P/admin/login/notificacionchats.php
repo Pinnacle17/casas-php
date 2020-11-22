@@ -3,13 +3,12 @@
     require("../../conexion.php");
     require("../../BD.php");
     require("../../modelo/ClaseChat.php");
-    $conexion = conexion();
-    $usuario = Chat::Chat_estado(0);
-    if($usuario == null){
-        $chats = 0;//no hay chats activos
+    $consulta_select_chat = "SELECT fk_usuario FROM chat WHERE notificacion = '0'";
+    $resultado = BD::consultaSelect($consulta_select_chat);
+    if(mysqli_num_rows($resultado) > 0){
+        $chats = 1;
     }else{
-        $chats = 1;//hay chats activos 
+        $chats = 0;
     }
-
     echo json_encode($chats);
 ?>

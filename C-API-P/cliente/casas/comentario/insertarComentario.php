@@ -2,7 +2,7 @@
     require("../../../headers.php");
     require("../../../BD.php");
     require("../../../conexion.php");
-
+    require("../../../modelo/ClaseCasa.php");
     $conexion = conexion();
     
     $id_usuario = $_GET['id_usuario'];
@@ -19,7 +19,10 @@
     }
     $insertar_comentario = "INSERT INTO calificacion(limpieza, ambiente, instalaciones, comentario, estado, fk_usuario, fk_casa) VALUES ('$cal_limpieza', '$cal_ambiente', '$cal_instalaciones', '$comentario', '$estado', '$id_usuario', '$id_casa')";
     BD::consultaSelect($insertar_comentario);
-
+    if($estado == 1){
+        Casa::UpdateCalificacionCasa($id_casa);
+    }
+    
     class Result {}
 
     $response = new Result();
